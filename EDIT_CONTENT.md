@@ -37,4 +37,4 @@
 - [Instagram](https://www.instagram.com/nkust_magiclub/)
 - [Facebook](https://www.facebook.com/NKUSTmagic/)
 - [Threads](https://www.threads.com/@nkust_magiclub)
-- [社團網站](https://nkustmagic.com/)
+

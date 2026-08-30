@@ -28,7 +28,7 @@
 
 想先看看社團平常在做什麼，可以從完整介紹開始。
 
-- [查看社團介紹](https://osa.nkust.edu.tw/var/file/154/1154/img/2080/480293482.pdf)
+- [查看社團介紹](https://docs.google.com/gview?embedded=true&url=https%3A%2F%2Fosa.nkust.edu.tw%2Fvar%2Ffile%2F154%2F1154%2Fimg%2F2080%2F480293482.pdf)
 
 ---
 

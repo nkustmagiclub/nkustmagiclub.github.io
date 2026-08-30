@@ -29,7 +29,7 @@ a {
   left: 0.75rem;
   padding: 0.6rem 0.9rem;
   border: 2px solid var(--surface);
-  border-radius: 0;
+  border-radius: 0.65rem;
   color: var(--surface);
   background: var(--club-primary-strong);
   transform: translateY(-180%);
@@ -135,7 +135,7 @@ a {
   min-height: 22rem;
   margin-inline: auto;
   border: 3px solid var(--surface);
-  border-radius: 0;
+  border-radius: var(--card-radius);
   background: var(--surface);
   box-shadow: 12px 12px 0 rgba(255, 255, 255, 0.13);
   transform: none;
@@ -206,7 +206,7 @@ a {
   width: 9.5rem;
   aspect-ratio: 0.7;
   border: 3px solid var(--club-primary-strong);
-  border-radius: 0;
+  border-radius: 0.85rem;
   box-shadow: none;
 }
 
@@ -286,7 +286,7 @@ a {
   gap: 1rem;
   padding: 1.25rem 1.35rem;
   border: 2px solid var(--surface);
-  border-radius: 0;
+  border-radius: var(--button-radius);
   color: var(--surface);
   background: var(--club-primary-strong);
   box-shadow: none;
@@ -338,7 +338,7 @@ a {
   flex: 0 0 auto;
   place-items: center;
   border: 2px solid currentColor;
-  border-radius: 0;
+  border-radius: 999px;
   color: inherit;
   background: transparent;
   font-size: 1.1rem;
@@ -368,7 +368,7 @@ a {
   width: min(100%, 42rem);
   padding: clamp(1.4rem, 5vw, 2.6rem);
   border: 2px solid var(--line-color);
-  border-radius: 0;
+  border-radius: var(--card-radius);
   background: var(--surface);
   box-shadow: var(--card-shadow);
 }
@@ -383,7 +383,7 @@ a {
 .loading-dot {
   width: 0.75rem;
   height: 0.75rem;
-  border-radius: 0;
+  border-radius: 50%;
   background: var(--club-primary-strong);
   animation: pulse 1.15s ease-in-out infinite alternate;
 }

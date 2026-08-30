@@ -1,0 +1,16 @@
+/* 想換顏色時，只改冒號後面的值；其他檔案不用動。 */
+:root {
+  --club-primary: #3867d6;
+  --club-primary-strong: #2449a8;
+  --club-accent: #f7b84b;
+  --page-background: #f8fbff;
+  --surface: #ffffff;
+  --surface-soft: #eef5ff;
+  --text-main: #182235;
+  --text-muted: #61708a;
+  --line-color: #dce7f5;
+  --hero-glow: #dbe9ff;
+  --card-radius: 1.35rem;
+  --button-radius: 1rem;
+  --card-shadow: 0 18px 45px rgba(44, 76, 130, 0.11);
+}

@@ -187,11 +187,11 @@ a {
 .link-card {
   position: relative;
   display: flex;
-  min-height: 7rem;
+  min-height: 5rem;
   align-items: center;
   justify-content: space-between;
   gap: 1rem;
-  padding: 1.25rem 1.35rem;
+  padding: 0.75rem 1.35rem;
   border: 2px solid var(--club-primary-strong);
   border-radius: var(--button-radius);
   color: var(--club-primary-strong);

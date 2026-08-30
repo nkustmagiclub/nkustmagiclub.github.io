@@ -3,6 +3,11 @@
 
   const CONTENT_FILE = "EDIT_CONTENT.md";
   const app = document.getElementById("app");
+  const copyrightYear = document.getElementById("copyright-year");
+
+  if (copyrightYear) {
+    copyrightYear.textContent = String(new Date().getFullYear());
+  }
 
   function plainText(tokens) {
     if (!Array.isArray(tokens)) return "";
@@ -144,9 +149,6 @@
     const grid = element("div", "hero-grid");
     const copy = element("div", "hero-copy");
 
-    copy.appendChild(
-      element("p", "hero-kicker", "國立高雄科技大學・學生社團")
-    );
     copy.appendChild(element("h1", "display-title", page.title));
 
     if (page.subtitle) {

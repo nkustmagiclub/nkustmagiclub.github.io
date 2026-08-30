@@ -192,10 +192,10 @@ a {
   justify-content: space-between;
   gap: 1rem;
   padding: 1.25rem 1.35rem;
-  border: 2px solid var(--surface);
+  border: 2px solid var(--club-primary-strong);
   border-radius: var(--button-radius);
-  color: var(--surface);
-  background: var(--club-primary-strong);
+  color: var(--club-primary-strong);
+  background: var(--surface);
   box-shadow: none;
   font-weight: 900;
   letter-spacing: 0.04em;
@@ -208,10 +208,10 @@ a {
 }
 
 .link-card:hover {
-  border-color: var(--surface);
-  color: var(--club-primary-strong);
-  background: var(--surface);
-  box-shadow: 8px 8px 0 #4d4b48;
+  border-color: var(--club-primary-strong);
+  color: var(--surface);
+  background: var(--club-primary-strong);
+  box-shadow: 8px 8px 0 var(--surface-soft);
   transform: translate(-3px, -3px);
 }
 
@@ -260,7 +260,40 @@ a {
 }
 
 .footer-note {
+  width: min(100%, 22rem);
+  max-width: 100%;
+  flex: 0 0 auto;
   color: #777570;
+}
+
+.footer-copyright {
+  flex: 0 0 auto;
+  align-self: center;
+  white-space: nowrap;
+}
+
+.footer-logo-link {
+  display: inline-flex;
+  width: 100%;
+  padding: 0.55rem 0.75rem;
+  border-radius: 0.7rem;
+  background: var(--surface);
+  transition: transform 160ms ease;
+}
+
+.footer-logo-link:hover {
+  transform: translateY(-2px);
+}
+
+.footer-logo-link:focus-visible {
+  outline: 3px solid var(--surface);
+  outline-offset: 3px;
+}
+
+.footer-logo {
+  display: block;
+  width: 100%;
+  height: auto;
 }
 
 .loading-state,

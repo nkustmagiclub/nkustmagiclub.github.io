@@ -125,11 +125,13 @@
 
       if (!allowed.includes(url.protocol)) return null;
 
+      const external =
+        ["http:", "https:"].includes(url.protocol) &&
+        url.origin !== window.location.origin;
+
       return {
         href: url.href,
-        external:
-          ["http:", "https:"].includes(url.protocol) &&
-          url.origin !== window.location.origin,
+        newTab: external || url.pathname.toLowerCase().endsWith(".pdf"),
       };
     } catch (_error) {
       return null;
@@ -151,31 +153,11 @@
       copy.appendChild(element("p", "hero-subtitle", page.subtitle));
     }
 
-    appendParagraphs(copy, page.intro, "hero-description");
+    if (page.intro.length > 0) {
+      appendParagraphs(copy, page.intro, "hero-description");
+    }
 
-    const art = element("figure", "hero-art mb-0");
-    const image = element("img", "hero-image");
-    image.alt = `${page.title}主視覺`;
-    image.decoding = "async";
-
-    const fallback = element("div", "hero-art-fallback");
-    fallback.setAttribute("aria-hidden", "true");
-    fallback.innerHTML =
-      '<span class="magic-spark">✦</span><span class="card-shape card-one"></span><span class="card-shape card-two"></span>';
-
-    image.addEventListener("load", () => {
-      image.classList.add("is-ready");
-      fallback.classList.add("d-none");
-    });
-    image.addEventListener("error", () => {
-      image.remove();
-    });
-    image.src = "images/hero.jpg";
-
-    art.appendChild(image);
-    art.appendChild(fallback);
     grid.appendChild(copy);
-    grid.appendChild(art);
     container.appendChild(grid);
     hero.appendChild(container);
 
@@ -200,7 +182,7 @@
     const anchor = element("a", "link-card h-100", link.label);
     anchor.href = safe.href;
 
-    if (safe.external) {
+    if (safe.newTab) {
       anchor.target = "_blank";
       anchor.rel = "noopener noreferrer";
     }

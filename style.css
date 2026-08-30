@@ -107,7 +107,7 @@ a {
 .display-title {
   max-width: none;
   margin: 0;
-  font-size: clamp(3rem, 12vw, 6.5rem);
+  font-size: clamp(3rem, 11vw, 6.5rem);
   font-weight: 900;
   letter-spacing: -0.04em;
   line-height: 0.98;
@@ -129,101 +129,6 @@ a {
   font-size: clamp(1.05rem, 2.3vw, 1.25rem);
 }
 
-.hero-art {
-  position: relative;
-  width: min(100%, 29rem);
-  min-height: 22rem;
-  margin-inline: auto;
-  border: 3px solid var(--surface);
-  border-radius: var(--card-radius);
-  background: var(--surface);
-  box-shadow: 12px 12px 0 rgba(255, 255, 255, 0.13);
-  transform: none;
-}
-
-.hero-image {
-  position: absolute;
-  z-index: 2;
-  inset: 0;
-  width: 100%;
-  height: 100%;
-  border-radius: inherit;
-  object-fit: cover;
-  opacity: 0;
-  filter: grayscale(1) contrast(1.12);
-  transition: opacity 240ms ease;
-}
-
-.hero-image.is-ready {
-  opacity: 1;
-}
-
-.hero-art-fallback {
-  position: absolute;
-  inset: 0;
-  overflow: hidden;
-  border-radius: inherit;
-}
-
-.hero-art-fallback::before,
-.hero-art-fallback::after {
-  position: absolute;
-  z-index: 3;
-  color: var(--club-primary-strong);
-  font-weight: 900;
-  line-height: 1;
-}
-
-.hero-art-fallback::before {
-  top: 2rem;
-  left: 2rem;
-  content: "NKUST";
-  font-size: clamp(1.15rem, 3vw, 1.7rem);
-  letter-spacing: 0.22em;
-}
-
-.hero-art-fallback::after {
-  right: 1.8rem;
-  bottom: 1.6rem;
-  content: "MAGIC CLUB";
-  font-size: 0.72rem;
-  letter-spacing: 0.2em;
-}
-
-.magic-spark {
-  position: absolute;
-  top: 2.2rem;
-  right: 2.5rem;
-  color: var(--club-primary-strong);
-  font-size: clamp(4rem, 16vw, 7rem);
-  line-height: 1;
-  filter: none;
-}
-
-.card-shape {
-  position: absolute;
-  display: block;
-  width: 9.5rem;
-  aspect-ratio: 0.7;
-  border: 3px solid var(--club-primary-strong);
-  border-radius: 0.85rem;
-  box-shadow: none;
-}
-
-.card-one {
-  bottom: -2rem;
-  left: 2.3rem;
-  background: var(--club-primary-strong);
-  transform: rotate(-13deg);
-}
-
-.card-two {
-  right: 3.2rem;
-  bottom: -3rem;
-  background: #383532;
-  transform: rotate(12deg);
-}
-
 .content-section {
   padding: clamp(4.5rem, 10vw, 7rem) 0;
   border-top: 1px solid #242424;
@@ -240,7 +145,7 @@ a {
 .section-heading {
   display: flex;
   gap: 1rem;
-  align-items: baseline;
+  align-items: center;
   margin-bottom: 1.15rem;
   padding-bottom: 1rem;
   border-bottom: 2px solid currentColor;
@@ -419,29 +324,9 @@ a {
   }
 }
 
-@media (min-width: 992px) {
-  .hero-grid {
-    grid-template-columns: minmax(0, 1.15fr) minmax(22rem, 0.85fr);
-  }
-
-  .hero-art {
-    min-height: 30rem;
-  }
-}
-
-@media (min-width: 992px) and (max-width: 1199.98px) {
-  .display-title {
-    font-size: clamp(4rem, 7vw, 5.2rem);
-  }
-}
-
 @media (max-width: 575.98px) {
   .site-hero {
     min-height: auto;
-  }
-
-  .hero-art {
-    min-height: 19rem;
   }
 
   .section-description {

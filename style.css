@@ -83,7 +83,9 @@ a {
 }
 
 .hero-copy {
-  max-width: 48rem;
+  width: 100%;
+  max-width: none;
+  text-align: center;
 }
 
 .hero-kicker {
@@ -131,9 +133,9 @@ a {
 
 .content-section {
   padding: clamp(4.5rem, 10vw, 7rem) 0;
-  border-top: 1px solid #242424;
-  color: var(--surface);
-  background: var(--club-primary-strong);
+  border-top: 1px solid var(--line-color);
+  color: var(--text-main);
+  background: var(--surface);
 }
 
 .section-tinted {
@@ -174,7 +176,7 @@ a {
 .section-description {
   max-width: 50rem;
   margin: 0 0 1rem 2.65rem;
-  color: #b9b7b2;
+  color: var(--text-muted);
   font-size: 1.05rem;
 }
 

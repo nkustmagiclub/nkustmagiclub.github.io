@@ -102,12 +102,13 @@ a {
 }
 
 .display-title {
-  max-width: 9ch;
+  max-width: none;
   margin: 0;
   font-size: clamp(3rem, 12vw, 6.5rem);
   font-weight: 800;
   letter-spacing: -0.055em;
   line-height: 0.98;
+  white-space: nowrap;
 }
 
 .hero-subtitle {
@@ -364,6 +365,12 @@ a {
 
   .hero-art {
     min-height: 30rem;
+  }
+}
+
+@media (min-width: 992px) and (max-width: 1199.98px) {
+  .display-title {
+    font-size: clamp(4rem, 7vw, 5.2rem);
   }
 }
 

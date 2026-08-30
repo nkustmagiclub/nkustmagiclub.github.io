@@ -20,13 +20,15 @@
 
 最新活動與報名資訊會在這裡更新。目前若沒有公開報名項目，保留這段文字即可。
 
+- [社團活動](https://forms.gle/djtMv83iiyGjRZ8K8)
+
 ---
 
 ## 認識我們
 
 想先看看社團平常在做什麼，可以從完整介紹開始。
 
-- [查看社團介紹](https://nkustmagic.com/info/)
+- [查看社團介紹](https://osa.nkust.edu.tw/var/file/154/1154/img/2080/480293482.pdf)
 
 ---
 
@@ -37,4 +39,3 @@
 - [Instagram](https://www.instagram.com/nkust_magiclub/)
 - [Facebook](https://www.facebook.com/NKUSTmagic/)
 - [Threads](https://www.threads.com/@nkust_magiclub)
-

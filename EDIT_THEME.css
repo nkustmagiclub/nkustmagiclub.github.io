@@ -10,7 +10,7 @@
   --text-muted: #5f5d59;
   --line-color: #111111;
   --hero-glow: transparent;
-  --card-radius: 0;
-  --button-radius: 0;
+  --card-radius: 1.35rem;
+  --button-radius: 1rem;
   --card-shadow: 10px 10px 0 rgba(0, 0, 0, 0.18);
 }

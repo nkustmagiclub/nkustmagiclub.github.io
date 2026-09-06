@@ -254,18 +254,19 @@
 
   function buildInstagramEmbed(link) {
     const shell = element("div", "instagram-embed-shell");
-    const frame = element("iframe", "instagram-embed-frame");
+    const frame = element(
+      "blockquote",
+      "instagram-media instagram-embed-frame"
+    );
     const fallback = element(
       "a",
       "instagram-embed-fallback",
       "若貼文未顯示，前往 Instagram 查看 ↗"
     );
 
-    frame.src = instagramEmbedUrl(link.href);
-    frame.title = link.label || "學生會 Instagram 貼文";
-    frame.loading = "lazy";
-    frame.referrerPolicy = "strict-origin-when-cross-origin";
-    frame.setAttribute("allowfullscreen", "");
+    frame.setAttribute("data-instgrm-permalink", link.href);
+    frame.setAttribute("data-instgrm-version", "14");
+    frame.setAttribute("aria-label", link.label || "Instagram 貼文");
 
     fallback.href = link.href;
     fallback.target = "_blank";
@@ -274,6 +275,37 @@
     shell.appendChild(frame);
     shell.appendChild(fallback);
     return shell;
+  }
+
+  function activateInstagramEmbeds() {
+    if (!app.querySelector(".instagram-media")) return;
+
+    const processEmbeds = () => {
+      if (window.instgrm && window.instgrm.Embeds) {
+        window.instgrm.Embeds.process();
+      }
+    };
+
+    if (window.instgrm && window.instgrm.Embeds) {
+      processEmbeds();
+      return;
+    }
+
+    const existingScript = document.querySelector(
+      'script[src="https://www.instagram.com/embed.js"]'
+    );
+
+    if (existingScript) {
+      existingScript.addEventListener("load", processEmbeds, { once: true });
+      return;
+    }
+
+    const script = document.createElement("script");
+    script.async = true;
+    script.src = "https://www.instagram.com/embed.js";
+    script.referrerPolicy = "strict-origin-when-cross-origin";
+    script.addEventListener("load", processEmbeds, { once: true });
+    document.body.appendChild(script);
   }
 
   function buildHero(page) {
@@ -521,6 +553,7 @@
     }
 
     app.replaceChildren(fragment);
+    activateInstagramEmbeds();
   }
 
   function renderError() {

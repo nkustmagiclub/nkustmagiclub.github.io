@@ -4,6 +4,7 @@
   const PAGE_KIND = document.body.dataset.page || "home";
   const CONTENT_FILE = document.body.dataset.contentFile || "EDIT_CONTENT.md";
   const PAGE_KICKER = document.body.dataset.kicker || "02 / ABOUT";
+  const PAGE_VERSION = "20260906-fluid-layout-2";
   const app = document.getElementById("app");
   const copyrightYear = document.getElementById("copyright-year");
 
@@ -178,6 +179,13 @@
     return node;
   }
 
+  function pageContainer(extraClasses = "") {
+    return element(
+      "div",
+      ["container-fluid", extraClasses].filter(Boolean).join(" ")
+    );
+  }
+
   function appendParagraphs(parent, paragraphs, className) {
     paragraphs.forEach((text) => {
       parent.appendChild(element("p", className, text));
@@ -194,6 +202,10 @@
       const external =
         ["http:", "https:"].includes(url.protocol) &&
         url.origin !== window.location.origin;
+
+      if (!external && url.pathname.toLowerCase().endsWith(".html")) {
+        url.searchParams.set("v", PAGE_VERSION);
+      }
 
       return {
         href: url.href,
@@ -310,7 +322,7 @@
 
   function buildHero(page) {
     const hero = element("header", "site-hero");
-    const container = element("div", "container-fluid position-relative");
+    const container = pageContainer("position-relative");
     const grid = element("div", "hero-grid");
     const copy = element("div", "hero-copy");
 
@@ -333,11 +345,11 @@
 
   function buildAboutHero(page) {
     const hero = element("header", "about-hero");
-    const container = element("div", "container-fluid");
+    const container = pageContainer();
     const navigation = element("nav", "about-navigation");
     const backLink = element("a", "about-back-link", "← 回首頁");
 
-    backLink.href = "index.html";
+    backLink.href = `index.html?v=${PAGE_VERSION}`;
     backLink.setAttribute("aria-label", "返回高科大魔術社首頁");
     navigation.appendChild(backLink);
     container.appendChild(navigation);
@@ -414,7 +426,7 @@
       "section",
       `content-section ${index % 2 === 1 ? "section-tinted" : ""}`
     );
-    const container = element("div", "container-fluid");
+    const container = pageContainer();
     const headingRow = element("div", "section-heading");
     const sectionNumber = element(
       "span",
@@ -440,7 +452,7 @@
 
   function buildAboutSection(section, index) {
     const wrapper = element("section", "about-content-section");
-    const container = element("div", "container-fluid");
+    const container = pageContainer();
     const headingRow = element("div", "section-heading about-section-heading");
     const sectionNumber = element(
       "span",

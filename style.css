@@ -18,6 +18,16 @@ body {
   text-rendering: optimizeLegibility;
 }
 
+/* All pages share the same Bootstrap fluid shell. */
+#app > .site-hero > .container-fluid,
+#app > .about-hero > .container-fluid,
+#app > .content-section > .container-fluid,
+#app > .about-content-section > .container-fluid,
+.site-footer > .container-fluid {
+  width: 100%;
+  max-width: none;
+}
+
 a {
   color: inherit;
 }

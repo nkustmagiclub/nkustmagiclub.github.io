@@ -293,6 +293,12 @@ a {
   margin: 0.5rem 0 0;
 }
 
+.experience-instagram-embed .instagram-embed-frame {
+  height: auto;
+  aspect-ratio: 4 / 3;
+  background: var(--media-background);
+}
+
 .detail-image-figure {
   width: min(100%, 52rem);
   margin: 1.75rem 0 0 2.65rem;

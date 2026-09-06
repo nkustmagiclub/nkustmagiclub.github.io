@@ -1,7 +1,8 @@
 (function () {
   "use strict";
 
-  const CONTENT_FILE = "EDIT_CONTENT.md";
+  const PAGE_KIND = document.body.dataset.page || "home";
+  const CONTENT_FILE = document.body.dataset.contentFile || "EDIT_CONTENT.md";
   const app = document.getElementById("app");
   const copyrightYear = document.getElementById("copyright-year");
 
@@ -56,6 +57,7 @@
     };
 
     let currentSection = null;
+    let currentItem = null;
 
     tokens.forEach((token) => {
       if (token.type === "heading" && token.depth === 1 && !page.title) {
@@ -75,8 +77,20 @@
           title: heading,
           paragraphs: [],
           links: [],
+          items: [],
         };
+        currentItem = null;
         page.sections.push(currentSection);
+        return;
+      }
+
+      if (token.type === "heading" && token.depth === 3 && currentSection) {
+        const heading = plainText(token.tokens) || token.text.trim();
+        currentItem = {
+          title: heading,
+          paragraphs: [],
+        };
+        currentSection.items.push(currentItem);
         return;
       }
 
@@ -84,7 +98,8 @@
         const text = plainText(token.tokens) || token.text.trim();
         if (!text) return;
 
-        if (currentSection) currentSection.paragraphs.push(text);
+        if (currentItem) currentItem.paragraphs.push(text);
+        else if (currentSection) currentSection.paragraphs.push(text);
         else page.intro.push(text);
         return;
       }
@@ -166,6 +181,34 @@
     return hero;
   }
 
+  function buildAboutHero(page) {
+    const hero = element("header", "about-hero");
+    const container = element("div", "container");
+    const navigation = element("nav", "about-navigation");
+    const backLink = element("a", "about-back-link", "← 回首頁");
+
+    backLink.href = "index.html";
+    backLink.setAttribute("aria-label", "返回高科大魔術社首頁");
+    navigation.appendChild(backLink);
+    container.appendChild(navigation);
+
+    const heading = element("div", "about-heading");
+    heading.appendChild(element("p", "about-kicker", "02 / ABOUT"));
+    heading.appendChild(element("h1", "about-title", page.title));
+
+    if (page.subtitle) {
+      heading.appendChild(element("p", "about-subtitle", page.subtitle));
+    }
+
+    if (page.intro.length > 0) {
+      appendParagraphs(heading, page.intro, "about-intro");
+    }
+
+    container.appendChild(heading);
+    hero.appendChild(container);
+    return hero;
+  }
+
   function buildLinkCard(link) {
     const column = element("div", "col-12 col-md-6 col-xl-4");
     const safe = normalizeLink(link.href);
@@ -226,16 +269,72 @@
     return wrapper;
   }
 
+  function buildAboutSection(section, index) {
+    const wrapper = element("section", "about-content-section");
+    const container = element("div", "container");
+    const headingRow = element("div", "section-heading about-section-heading");
+    const sectionNumber = element(
+      "span",
+      "section-number",
+      String(index + 1).padStart(2, "0")
+    );
+
+    sectionNumber.setAttribute("aria-hidden", "true");
+    headingRow.appendChild(sectionNumber);
+    headingRow.appendChild(element("h2", "section-title", section.title));
+    container.appendChild(headingRow);
+    appendParagraphs(container, section.paragraphs, "section-description");
+
+    if (section.items.length > 0) {
+      const grid = element("div", "experience-grid");
+
+      section.items.forEach((item, itemIndex) => {
+        const article = element("article", "experience-item");
+        const number = element(
+          "span",
+          "experience-number",
+          String(itemIndex + 1).padStart(2, "0")
+        );
+        const copy = element("div", "experience-copy");
+
+        number.setAttribute("aria-hidden", "true");
+        copy.appendChild(element("h3", "experience-title", item.title));
+        appendParagraphs(copy, item.paragraphs, "experience-description");
+        article.appendChild(number);
+        article.appendChild(copy);
+        grid.appendChild(article);
+      });
+
+      container.appendChild(grid);
+    }
+
+    if (section.links.length > 0) {
+      const row = element("div", "row g-3 g-lg-4 mt-4");
+      section.links.forEach((link) => row.appendChild(buildLinkCard(link)));
+      container.appendChild(row);
+    }
+
+    wrapper.appendChild(container);
+    return wrapper;
+  }
+
   function renderPage(page) {
     document.title = page.subtitle
       ? `${page.title}｜${page.subtitle}`
       : page.title;
 
     const fragment = document.createDocumentFragment();
-    fragment.appendChild(buildHero(page));
-    page.sections.forEach((section, index) => {
-      fragment.appendChild(buildSection(section, index));
-    });
+    if (PAGE_KIND === "about") {
+      fragment.appendChild(buildAboutHero(page));
+      page.sections.forEach((section, index) => {
+        fragment.appendChild(buildAboutSection(section, index));
+      });
+    } else {
+      fragment.appendChild(buildHero(page));
+      page.sections.forEach((section, index) => {
+        fragment.appendChild(buildSection(section, index));
+      });
+    }
 
     app.replaceChildren(fragment);
   }
@@ -256,7 +355,7 @@
       element(
         "p",
         "error-description mb-0",
-        "請稍後重新整理；若仍然出現這個畫面，請確認 EDIT_CONTENT.md 是否存在、檔名大小寫是否正確。"
+        `請稍後重新整理；若仍然出現這個畫面，請確認 ${CONTENT_FILE} 是否存在、檔名大小寫是否正確。`
       )
     );
     section.appendChild(card);

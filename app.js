@@ -221,6 +221,25 @@
 
   function buildLinkCard(link) {
     const column = element("div", "col-12 col-md-6 col-xl-4");
+    const noticePrefix = "notice:";
+
+    if (link.href.startsWith(noticePrefix)) {
+      const message = link.href.slice(noticePrefix.length).trim();
+      const anchor = element("a", "link-card h-100", link.label);
+      anchor.href = "#";
+      anchor.setAttribute("aria-label", `${link.label}；${message}`);
+      anchor.addEventListener("click", (event) => {
+        event.preventDefault();
+        window.alert(message);
+      });
+
+      const noticeMark = element("span", "link-arrow", "!");
+      noticeMark.setAttribute("aria-hidden", "true");
+      anchor.appendChild(noticeMark);
+      column.appendChild(anchor);
+      return column;
+    }
+
     const safe = normalizeLink(link.href);
 
     if (!safe) {

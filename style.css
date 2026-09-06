@@ -245,6 +245,10 @@ a {
   border-top: 2px solid var(--line-color);
 }
 
+.experience-item:first-child {
+  border-top: 0;
+}
+
 .experience-item:nth-last-child(-n + 2) {
   border-bottom: 2px solid var(--line-color);
 }
@@ -600,6 +604,12 @@ a {
 
   .experience-item:last-child {
     border-bottom: 2px solid var(--line-color);
+  }
+}
+
+@media (min-width: 576px) {
+  .experience-item:nth-child(2) {
+    border-top: 0;
   }
 }
 

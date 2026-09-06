@@ -4,7 +4,7 @@
   const PAGE_KIND = document.body.dataset.page || "home";
   const CONTENT_FILE = document.body.dataset.contentFile || "EDIT_CONTENT.md";
   const PAGE_KICKER = document.body.dataset.kicker || "02 / ABOUT";
-  const PAGE_VERSION = "20260906-fallback-space";
+  const PAGE_VERSION = "20260906-header-space";
   const app = document.getElementById("app");
   const copyrightYear = document.getElementById("copyright-year");
 
@@ -321,13 +321,13 @@
   }
 
   function buildHero(page) {
-    const hero = element(
-      "header",
-      "site-hero d-flex align-items-center py-4 py-lg-5"
-    );
-    const container = pageContainer("position-relative");
+    const hero = element("header", "site-hero");
+    const futureHeaderSpace = element("div", "future-header-space");
+    const container = pageContainer("position-relative py-4 py-lg-5");
     const grid = element("div", "hero-grid");
     const copy = element("div", "hero-copy");
+
+    futureHeaderSpace.setAttribute("aria-hidden", "true");
 
     copy.appendChild(element("h1", "display-title", page.title));
 
@@ -341,6 +341,7 @@
 
     grid.appendChild(copy);
     container.appendChild(grid);
+    hero.appendChild(futureHeaderSpace);
     hero.appendChild(container);
 
     return hero;

@@ -32,6 +32,11 @@ a {
   color: inherit;
 }
 
+.future-header-space {
+  min-height: var(--future-header-space);
+  background: var(--club-primary-strong);
+}
+
 .skip-link {
   position: fixed;
   z-index: 999;

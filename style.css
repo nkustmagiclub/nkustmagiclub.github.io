@@ -235,7 +235,7 @@ a {
 }
 
 .about-section-heading {
-  margin-bottom: clamp(1.5rem, 5vw, 3rem);
+  margin-bottom: 0;
 }
 
 .experience-grid {
@@ -246,11 +246,12 @@ a {
 .experience-item {
   display: grid;
   grid-template-columns: 3.25rem minmax(0, 1fr);
-  gap: 1rem;
+  column-gap: 1rem;
+  row-gap: 0;
   align-items: center;
   align-content: start;
-  min-height: 7.5rem;
-  padding: 1.35rem 0;
+  min-height: 0;
+  padding-block: 0;
   border-top: 2px solid var(--line-color);
 }
 
@@ -278,18 +279,19 @@ a {
 }
 
 .experience-description {
-  margin: 0.55rem 0 0;
+  margin: 0;
   color: var(--text-muted);
 }
 
 .experience-image-figure {
   grid-column: 1 / -1;
   width: 100%;
-  margin: 0.5rem 0 0;
+  margin-top: 0;
 }
 
 .experience-image-figure.detail-image-portrait {
   width: 95%;
+  max-width: 960px;
 }
 
 .experience-instagram-embed,
@@ -299,13 +301,13 @@ a {
 
 .experience-instagram-embed {
   width: 100%;
-  margin: 0.5rem 0 0;
+  margin-top: 0;
 }
 
 .detail-image-figure {
   width: 95%;
-  max-width: none;
-  margin: 1.75rem auto 0;
+  max-width: 960px;
+  margin: 0 auto;
 }
 
 .detail-image-portrait {
@@ -313,7 +315,7 @@ a {
 
   position: relative;
   width: 95%;
-  max-width: none;
+  max-width: 960px;
   aspect-ratio: 4 / 3;
   overflow: hidden;
   padding: 0;
@@ -341,15 +343,15 @@ a {
 
 .instagram-embed-shell {
   width: 95%;
-  max-width: none;
-  margin: 1.75rem auto 0;
+  max-width: 960px;
+  margin: 0 auto;
 }
 
 .instagram-embed-frame {
   display: block;
   width: 100% !important;
   min-width: 0 !important;
-  max-width: none !important;
+  max-width: 960px !important;
   margin: 0 !important;
   border: 0;
   border-radius: 0.9rem;
@@ -359,13 +361,13 @@ a {
 .instagram-embed-shell iframe {
   display: block;
   width: 100% !important;
-  max-width: none !important;
+  max-width: 960px !important;
   margin: 0 !important;
 }
 
 .instagram-embed-fallback {
   display: inline-block;
-  margin-top: 0.8rem;
+  margin-top: 0;
   font-weight: 900;
   text-underline-offset: 0.2em;
 }
@@ -387,8 +389,8 @@ a {
   display: flex;
   gap: 1rem;
   align-items: center;
-  margin-bottom: 1.15rem;
-  padding-bottom: 1rem;
+  margin-bottom: 0;
+  padding-bottom: 0;
   border-bottom: 2px solid currentColor;
 }
 
@@ -414,7 +416,7 @@ a {
 
 .section-description {
   max-width: 50rem;
-  margin: 0 0 1rem 2.65rem;
+  margin: 0 0 0 2.65rem;
   color: var(--text-muted);
   font-size: 1.05rem;
 }

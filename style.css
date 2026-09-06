@@ -55,7 +55,7 @@ a {
   min-height: min(760px, 86vh);
   align-items: center;
   overflow: hidden;
-  padding: clamp(4.75rem, 12vw, 8rem) 0;
+  padding: var(--title-space-before) 0 var(--vertical-space);
   border-bottom: 2px solid var(--surface);
   color: var(--surface);
   background: var(--club-primary-strong);
@@ -101,8 +101,8 @@ a {
 .hero-kicker {
   display: inline-flex;
   align-items: center;
-  gap: 0.55rem;
-  margin-bottom: 1.3rem;
+  gap: var(--vertical-space);
+  margin-bottom: var(--vertical-space);
   color: var(--surface);
   font-size: 0.8rem;
   font-weight: 900;
@@ -127,7 +127,7 @@ a {
 }
 
 .hero-subtitle {
-  margin: 1.3rem 0 0;
+  margin: var(--vertical-space) 0 0;
   color: var(--surface);
   font-size: clamp(1rem, 4.2vw, 1.35rem);
   font-weight: 900;
@@ -136,7 +136,7 @@ a {
 
 .hero-description {
   max-width: 42rem;
-  margin: 1.6rem 0 0;
+  margin: var(--vertical-space) 0 0;
   color: #c8c6c1;
   font-size: clamp(1.05rem, 2.3vw, 1.25rem);
 }
@@ -144,7 +144,7 @@ a {
 .about-hero {
   position: relative;
   overflow: hidden;
-  padding: clamp(1.25rem, 4vw, 2.5rem) 0 clamp(3.5rem, 10vw, 6.5rem);
+  padding: var(--vertical-space) 0;
   border-bottom: 0.75rem solid var(--surface-soft);
   color: var(--surface);
   background: var(--club-primary-strong);
@@ -194,12 +194,12 @@ a {
 
 .about-heading {
   max-width: 58rem;
-  margin: clamp(4rem, 11vw, 8rem) auto 0;
+  margin: var(--title-space-before) auto 0;
   text-align: center;
 }
 
 .about-kicker {
-  margin: 0 0 0.9rem;
+  margin: 0 0 var(--vertical-space);
   color: var(--about-highlight);
   font-size: 0.82rem;
   font-weight: 900;
@@ -215,7 +215,7 @@ a {
 }
 
 .about-subtitle {
-  margin: 1.2rem 0 0;
+  margin: var(--vertical-space) 0 0;
   color: var(--surface);
   font-size: clamp(0.9rem, 3vw, 1.2rem);
   font-weight: 900;
@@ -224,18 +224,18 @@ a {
 
 .about-intro {
   max-width: 42rem;
-  margin: 1.5rem auto 0;
+  margin: var(--vertical-space) auto 0;
   color: #c8c6c1;
 }
 
 .about-content-section {
-  padding: clamp(3.5rem, 9vw, 6.5rem) 0;
+  padding: var(--title-space-before) 0 var(--vertical-space);
   color: var(--text-main);
   background: var(--surface);
 }
 
 .about-section-heading {
-  margin-bottom: 0;
+  margin-bottom: var(--vertical-space);
 }
 
 .experience-grid {
@@ -246,12 +246,12 @@ a {
 .experience-item {
   display: grid;
   grid-template-columns: 3.25rem minmax(0, 1fr);
-  column-gap: 1rem;
+  column-gap: var(--vertical-space);
   row-gap: 0;
   align-items: center;
   align-content: start;
   min-height: 0;
-  padding-block: 0;
+  padding: var(--title-space-before) 0 var(--vertical-space);
   border-top: 2px solid var(--line-color);
 }
 
@@ -279,14 +279,14 @@ a {
 }
 
 .experience-description {
-  margin: 0;
+  margin: var(--vertical-space) 0 0;
   color: var(--text-muted);
 }
 
 .experience-image-figure {
   grid-column: 1 / -1;
   width: 100%;
-  margin-top: 0;
+  margin-top: var(--vertical-space);
 }
 
 .experience-image-figure.detail-image-portrait {
@@ -301,13 +301,13 @@ a {
 
 .experience-instagram-embed {
   width: 100%;
-  margin-top: 0;
+  margin-top: var(--vertical-space);
 }
 
 .detail-image-figure {
   width: 95%;
   max-width: 960px;
-  margin: 0 auto;
+  margin: var(--vertical-space) auto 0;
 }
 
 .detail-image-portrait {
@@ -344,7 +344,7 @@ a {
 .instagram-embed-shell {
   width: 95%;
   max-width: 960px;
-  margin: 0 auto;
+  margin: var(--vertical-space) auto 0;
 }
 
 .instagram-embed-frame {
@@ -367,13 +367,13 @@ a {
 
 .instagram-embed-fallback {
   display: inline-block;
-  margin-top: 0;
+  margin-top: var(--vertical-space);
   font-weight: 900;
   text-underline-offset: 0.2em;
 }
 
 .content-section {
-  padding: clamp(4.5rem, 10vw, 7rem) 0;
+  padding: var(--title-space-before) 0 var(--vertical-space);
   border-top: 1px solid var(--line-color);
   color: var(--text-main);
   background: var(--surface);
@@ -387,10 +387,10 @@ a {
 
 .section-heading {
   display: flex;
-  gap: 1rem;
+  gap: var(--vertical-space);
   align-items: center;
-  margin-bottom: 0;
-  padding-bottom: 0;
+  margin-bottom: var(--vertical-space);
+  padding-bottom: var(--vertical-space);
   border-bottom: 2px solid currentColor;
 }
 
@@ -416,7 +416,7 @@ a {
 
 .section-description {
   max-width: 50rem;
-  margin: 0 0 0 2.65rem;
+  margin: 0 0 var(--vertical-space) 2.65rem;
   color: var(--text-muted);
   font-size: 1.05rem;
 }
@@ -431,8 +431,8 @@ a {
   min-height: 5rem;
   align-items: center;
   justify-content: space-between;
-  gap: 1rem;
-  padding: 0.75rem 1.35rem;
+  gap: var(--vertical-space);
+  padding: var(--vertical-space) 1.35rem;
   border: 2px solid var(--club-primary-strong);
   border-radius: var(--button-radius);
   color: var(--club-primary-strong);
@@ -493,7 +493,7 @@ a {
 }
 
 .site-footer {
-  padding: 1rem 0;
+  padding: var(--vertical-space) 0;
   border-top: 2px solid var(--surface);
   color: #b9b7b2;
   background: var(--club-primary-strong);
@@ -547,7 +547,7 @@ a {
 .loading-card,
 .error-card {
   width: min(100%, 42rem);
-  padding: clamp(1.4rem, 5vw, 2.6rem);
+  padding: var(--vertical-space);
   border: 2px solid var(--line-color);
   border-radius: var(--card-radius);
   background: var(--surface);
@@ -557,7 +557,7 @@ a {
 .loading-card {
   display: flex;
   align-items: center;
-  gap: 0.8rem;
+  gap: var(--vertical-space);
   color: var(--text-muted);
 }
 
@@ -570,7 +570,7 @@ a {
 }
 
 .error-label {
-  margin-bottom: 0.65rem;
+  margin-bottom: var(--vertical-space);
   color: var(--club-primary-strong);
   font-size: 0.78rem;
   font-weight: 900;
@@ -578,7 +578,7 @@ a {
 }
 
 .error-title {
-  margin-bottom: 1rem;
+  margin-bottom: var(--vertical-space);
   font-size: clamp(1.65rem, 5vw, 2.35rem);
   font-weight: 900;
   letter-spacing: -0.02em;

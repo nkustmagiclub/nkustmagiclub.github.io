@@ -4,7 +4,7 @@
   const PAGE_KIND = document.body.dataset.page || "home";
   const CONTENT_FILE = document.body.dataset.contentFile || "EDIT_CONTENT.md";
   const PAGE_KICKER = document.body.dataset.kicker || "02 / ABOUT";
-  const PAGE_VERSION = "20260906-media-max-960";
+  const PAGE_VERSION = "20260906-spacing-system";
   const app = document.getElementById("app");
   const copyrightYear = document.getElementById("copyright-year");
 
@@ -441,7 +441,7 @@
     appendParagraphs(container, section.paragraphs, "section-description");
 
     if (section.links.length > 0) {
-      const row = element("div", "row gx-3 gx-lg-4 gy-0");
+      const row = element("div", "row gx-3 gx-lg-4 gy-3");
       section.links.forEach((link) => row.appendChild(buildLinkCard(link)));
       container.appendChild(row);
     }
@@ -508,7 +508,7 @@
         });
 
         if (itemRegularLinks.length > 0) {
-          const row = element("div", "row gx-3 gy-0 experience-link-row");
+          const row = element("div", "row gx-3 gy-3 experience-link-row");
           itemRegularLinks.forEach((link) => row.appendChild(buildLinkCard(link)));
           article.appendChild(row);
         }
@@ -537,7 +537,7 @@
     });
 
     if (regularLinks.length > 0) {
-      const row = element("div", "row gx-3 gx-lg-4 gy-0");
+      const row = element("div", "row gx-3 gx-lg-4 gy-3");
       regularLinks.forEach((link) => row.appendChild(buildLinkCard(link)));
       container.appendChild(row);
     }
@@ -569,7 +569,7 @@
   }
 
   function renderError() {
-    const section = element("section", "error-state container-fluid py-5");
+    const section = element("section", "error-state container-fluid py-3");
     const card = element("div", "error-card");
     card.setAttribute("role", "alert");
     card.appendChild(element("p", "error-label", "內容暫時無法載入"));

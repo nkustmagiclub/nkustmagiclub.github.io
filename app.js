@@ -4,7 +4,7 @@
   const PAGE_KIND = document.body.dataset.page || "home";
   const CONTENT_FILE = document.body.dataset.contentFile || "EDIT_CONTENT.md";
   const PAGE_KICKER = document.body.dataset.kicker || "02 / ABOUT";
-  const PAGE_VERSION = "20260906-spacing-system";
+  const PAGE_VERSION = "20260906-intro-gap-half";
   const app = document.getElementById("app");
   const copyrightYear = document.getElementById("copyright-year");
 
@@ -441,7 +441,7 @@
     appendParagraphs(container, section.paragraphs, "section-description");
 
     if (section.links.length > 0) {
-      const row = element("div", "row gx-3 gx-lg-4 gy-3");
+      const row = element("div", "row gx-3 gx-lg-4 link-list");
       section.links.forEach((link) => row.appendChild(buildLinkCard(link)));
       container.appendChild(row);
     }
@@ -453,6 +453,11 @@
   function buildAboutSection(section, index) {
     const wrapper = element("section", "about-content-section");
     const container = pageContainer();
+
+    if (section.paragraphs.length > 1) {
+      container.classList.add("multi-paragraph-section");
+    }
+
     const headingRow = element("div", "section-heading about-section-heading");
     const sectionNumber = element(
       "span",
@@ -508,7 +513,7 @@
         });
 
         if (itemRegularLinks.length > 0) {
-          const row = element("div", "row gx-3 gy-3 experience-link-row");
+          const row = element("div", "row gx-3 link-list experience-link-row");
           itemRegularLinks.forEach((link) => row.appendChild(buildLinkCard(link)));
           article.appendChild(row);
         }
@@ -537,7 +542,7 @@
     });
 
     if (regularLinks.length > 0) {
-      const row = element("div", "row gx-3 gx-lg-4 gy-3");
+      const row = element("div", "row gx-3 gx-lg-4 link-list");
       regularLinks.forEach((link) => row.appendChild(buildLinkCard(link)));
       container.appendChild(row);
     }

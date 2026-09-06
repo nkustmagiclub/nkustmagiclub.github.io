@@ -425,6 +425,14 @@ a {
   color: var(--text-muted);
 }
 
+.multi-paragraph-section .section-description:not(:last-of-type) {
+  margin-bottom: var(--compact-space);
+}
+
+.link-list {
+  --bs-gutter-y: var(--compact-space);
+}
+
 .link-card {
   position: relative;
   display: flex;

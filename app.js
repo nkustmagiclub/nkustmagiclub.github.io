@@ -310,7 +310,7 @@
 
   function buildHero(page) {
     const hero = element("header", "site-hero");
-    const container = element("div", "container position-relative");
+    const container = element("div", "container-fluid position-relative");
     const grid = element("div", "hero-grid");
     const copy = element("div", "hero-copy");
 
@@ -333,7 +333,7 @@
 
   function buildAboutHero(page) {
     const hero = element("header", "about-hero");
-    const container = element("div", "container");
+    const container = element("div", "container-fluid");
     const navigation = element("nav", "about-navigation");
     const backLink = element("a", "about-back-link", "← 回首頁");
 
@@ -414,7 +414,7 @@
       "section",
       `content-section ${index % 2 === 1 ? "section-tinted" : ""}`
     );
-    const container = element("div", "container");
+    const container = element("div", "container-fluid");
     const headingRow = element("div", "section-heading");
     const sectionNumber = element(
       "span",
@@ -440,7 +440,7 @@
 
   function buildAboutSection(section, index) {
     const wrapper = element("section", "about-content-section");
-    const container = element("div", "container");
+    const container = element("div", "container-fluid");
     const headingRow = element("div", "section-heading about-section-heading");
     const sectionNumber = element(
       "span",
@@ -557,7 +557,7 @@
   }
 
   function renderError() {
-    const section = element("section", "error-state container py-5");
+    const section = element("section", "error-state container-fluid py-5");
     const card = element("div", "error-card");
     card.setAttribute("role", "alert");
     card.appendChild(element("p", "error-label", "內容暫時無法載入"));

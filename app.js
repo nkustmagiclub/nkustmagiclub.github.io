@@ -40,6 +40,28 @@
     return null;
   }
 
+  function findImages(tokens) {
+    if (!Array.isArray(tokens)) return [];
+
+    const images = [];
+
+    tokens.forEach((token) => {
+      if (!token) return;
+
+      if (token.type === "image") {
+        images.push({
+          src: String(token.href || "").trim(),
+          alt: String(token.text || "").trim(),
+        });
+        return;
+      }
+
+      images.push(...findImages(token.tokens));
+    });
+
+    return images;
+  }
+
   function parseContent(markdown) {
     if (!window.marked || typeof window.marked.lexer !== "function") {
       throw new Error("Markdown parser is unavailable.");
@@ -79,6 +101,7 @@
           paragraphs: [],
           links: [],
           items: [],
+          images: [],
         };
         currentItem = null;
         page.sections.push(currentSection);
@@ -96,6 +119,13 @@
       }
 
       if (token.type === "paragraph") {
+        const images = findImages(token.tokens);
+
+        if (currentSection && images.length > 0) {
+          currentSection.images.push(...images);
+          return;
+        }
+
         const text = plainText(token.tokens) || token.text.trim();
         if (!text) return;
 
@@ -186,6 +216,30 @@
     } catch (_error) {
       return null;
     }
+  }
+
+  function normalizeImageSource(rawSrc) {
+    try {
+      const url = new URL(rawSrc, window.location.href);
+      if (!["http:", "https:"].includes(url.protocol)) return null;
+      return url.href;
+    } catch (_error) {
+      return null;
+    }
+  }
+
+  function buildContentImage(image) {
+    const src = normalizeImageSource(image.src);
+    if (!src) return null;
+
+    const figure = element("figure", "detail-image-figure");
+    const node = element("img", "detail-image");
+    node.src = src;
+    node.alt = image.alt || "活動圖片";
+    node.loading = "lazy";
+    node.decoding = "async";
+    figure.appendChild(node);
+    return figure;
   }
 
   function buildInstagramEmbed(link) {
@@ -380,6 +434,11 @@
 
       container.appendChild(grid);
     }
+
+    section.images.forEach((image) => {
+      const figure = buildContentImage(image);
+      if (figure) container.appendChild(figure);
+    });
 
     const instagramLinks =
       PAGE_KIND === "event"

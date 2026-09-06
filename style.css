@@ -135,7 +135,7 @@ a {
   position: relative;
   overflow: hidden;
   padding: clamp(1.25rem, 4vw, 2.5rem) 0 clamp(3.5rem, 10vw, 6.5rem);
-  border-bottom: 0.75rem solid var(--about-accent);
+  border-bottom: 0.75rem solid var(--surface-soft);
   color: var(--surface);
   background: var(--club-primary-strong);
   isolation: isolate;
@@ -249,7 +249,7 @@ a {
 }
 
 .experience-number {
-  color: var(--about-accent);
+  color: var(--club-primary-strong);
   font-size: 1.05rem;
   font-weight: 900;
   letter-spacing: 0.08em;
@@ -273,11 +273,34 @@ a {
   margin: 1.75rem 0 0 2.65rem;
 }
 
+.detail-image-portrait {
+  --media-frame-padding: clamp(0.75rem, 2vw, 1.25rem);
+
+  position: relative;
+  width: min(100%, 52rem);
+  aspect-ratio: 4 / 3;
+  overflow: hidden;
+  padding: 0;
+  background: var(--media-background);
+}
+
 .detail-image {
   display: block;
   width: 100%;
   height: auto;
   border-radius: 0.9rem;
+}
+
+.detail-image-portrait .detail-image {
+  position: absolute;
+  inset: var(--media-frame-padding);
+  width: calc(100% - var(--media-frame-padding) - var(--media-frame-padding));
+  max-width: none;
+  height: calc(100% - var(--media-frame-padding) - var(--media-frame-padding));
+  max-height: none;
+  border-radius: 0.45rem;
+  object-fit: contain;
+  object-position: center;
 }
 
 .instagram-embed-shell {

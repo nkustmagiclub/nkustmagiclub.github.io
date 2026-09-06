@@ -234,10 +234,15 @@
 
     const figure = element("figure", "detail-image-figure");
     const node = element("img", "detail-image");
-    node.src = src;
     node.alt = image.alt || "活動圖片";
     node.loading = "lazy";
     node.decoding = "async";
+    node.addEventListener("load", () => {
+      if (node.naturalHeight > node.naturalWidth) {
+        figure.classList.add("detail-image-portrait");
+      }
+    });
+    node.src = src;
     figure.appendChild(node);
     return figure;
   }

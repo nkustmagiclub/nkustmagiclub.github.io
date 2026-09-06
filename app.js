@@ -3,6 +3,7 @@
 
   const PAGE_KIND = document.body.dataset.page || "home";
   const CONTENT_FILE = document.body.dataset.contentFile || "EDIT_CONTENT.md";
+  const PAGE_KICKER = document.body.dataset.kicker || "02 / ABOUT";
   const app = document.getElementById("app");
   const copyrightYear = document.getElementById("copyright-year");
 
@@ -168,6 +169,49 @@
     }
   }
 
+  function instagramEmbedUrl(rawHref) {
+    try {
+      const url = new URL(rawHref);
+      const hostname = url.hostname.toLowerCase();
+      const match = url.pathname.match(/^\/p\/([^/]+)/);
+
+      if (
+        !["instagram.com", "www.instagram.com"].includes(hostname) ||
+        !match
+      ) {
+        return null;
+      }
+
+      return `https://www.instagram.com/p/${match[1]}/embed/`;
+    } catch (_error) {
+      return null;
+    }
+  }
+
+  function buildInstagramEmbed(link) {
+    const shell = element("div", "instagram-embed-shell");
+    const frame = element("iframe", "instagram-embed-frame");
+    const fallback = element(
+      "a",
+      "instagram-embed-fallback",
+      "若貼文未顯示，前往 Instagram 查看 ↗"
+    );
+
+    frame.src = instagramEmbedUrl(link.href);
+    frame.title = link.label || "學生會 Instagram 貼文";
+    frame.loading = "lazy";
+    frame.referrerPolicy = "strict-origin-when-cross-origin";
+    frame.setAttribute("allowfullscreen", "");
+
+    fallback.href = link.href;
+    fallback.target = "_blank";
+    fallback.rel = "noopener noreferrer";
+
+    shell.appendChild(frame);
+    shell.appendChild(fallback);
+    return shell;
+  }
+
   function buildHero(page) {
     const hero = element("header", "site-hero");
     const container = element("div", "container position-relative");
@@ -203,7 +247,7 @@
     container.appendChild(navigation);
 
     const heading = element("div", "about-heading");
-    heading.appendChild(element("p", "about-kicker", "02 / ABOUT"));
+    heading.appendChild(element("p", "about-kicker", PAGE_KICKER));
     heading.appendChild(element("h1", "about-title", page.title));
 
     if (page.subtitle) {
@@ -337,9 +381,21 @@
       container.appendChild(grid);
     }
 
-    if (section.links.length > 0) {
+    const instagramLinks =
+      PAGE_KIND === "event"
+        ? section.links.filter((link) => instagramEmbedUrl(link.href))
+        : [];
+    const regularLinks = section.links.filter(
+      (link) => !instagramLinks.includes(link)
+    );
+
+    instagramLinks.forEach((link) => {
+      container.appendChild(buildInstagramEmbed(link));
+    });
+
+    if (regularLinks.length > 0) {
       const row = element("div", "row g-3 g-lg-4 mt-4");
-      section.links.forEach((link) => row.appendChild(buildLinkCard(link)));
+      regularLinks.forEach((link) => row.appendChild(buildLinkCard(link)));
       container.appendChild(row);
     }
 
@@ -353,7 +409,7 @@
       : page.title;
 
     const fragment = document.createDocumentFragment();
-    if (PAGE_KIND === "about") {
+    if (PAGE_KIND === "about" || PAGE_KIND === "event") {
       fragment.appendChild(buildAboutHero(page));
       page.sections.forEach((section, index) => {
         fragment.appendChild(buildAboutSection(section, index));

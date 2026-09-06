@@ -1,4 +1,4 @@
-/* 想換顏色或間距時，只改冒號後面的值；其他檔案不用動。 */
+/* 想換顏色時，只改冒號後面的值；其他檔案不用動。 */
 :root {
   --club-primary: #161616;
   --club-primary-strong: #050505;
@@ -15,7 +15,4 @@
   --card-shadow: 10px 10px 0 rgba(0, 0, 0, 0.18);
   --about-highlight: #f0d348;
   --future-header-space: 4rem;
-  --vertical-space: 1.5rem;
-  --title-space-before: 3rem;
-  --compact-space: 0.5rem;
 }

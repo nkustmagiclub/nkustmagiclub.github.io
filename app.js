@@ -4,7 +4,7 @@
   const PAGE_KIND = document.body.dataset.page || "home";
   const CONTENT_FILE = document.body.dataset.contentFile || "EDIT_CONTENT.md";
   const PAGE_KICKER = document.body.dataset.kicker || "02 / ABOUT";
-  const PAGE_VERSION = "20260906-header-space";
+  const PAGE_VERSION = "20260907-bootstrap-spacing";
   const app = document.getElementById("app");
   const copyrightYear = document.getElementById("copyright-year");
 
@@ -254,7 +254,7 @@
     const src = normalizeImageSource(image.src);
     if (!src) return null;
 
-    const figure = element("figure", "detail-image-figure");
+    const figure = element("figure", "detail-image-figure mt-3");
     const node = element("img", "detail-image");
     node.alt = image.alt || "活動圖片";
     node.loading = "lazy";
@@ -265,14 +265,14 @@
   }
 
   function buildInstagramEmbed(link) {
-    const shell = element("div", "instagram-embed-shell");
+    const shell = element("div", "instagram-embed-shell mt-3");
     const frame = element(
       "blockquote",
       "instagram-media instagram-embed-frame"
     );
     const fallback = element(
       "a",
-      "instagram-embed-fallback",
+      "instagram-embed-fallback mt-1",
       "若貼文未顯示，前往 Instagram 查看 ↗"
     );
 
@@ -332,11 +332,11 @@
     copy.appendChild(element("h1", "display-title", page.title));
 
     if (page.subtitle) {
-      copy.appendChild(element("p", "hero-subtitle", page.subtitle));
+      copy.appendChild(element("p", "hero-subtitle mt-3 mb-0", page.subtitle));
     }
 
     if (page.intro.length > 0) {
-      appendParagraphs(copy, page.intro, "hero-description");
+      appendParagraphs(copy, page.intro, "hero-description mt-3 mb-0");
     }
 
     grid.appendChild(copy);
@@ -361,16 +361,18 @@
     navigation.appendChild(backLink);
     container.appendChild(navigation);
 
-    const heading = element("div", "about-heading");
-    heading.appendChild(element("p", "about-kicker", PAGE_KICKER));
+    const heading = element("div", "about-heading mt-4");
+    heading.appendChild(element("p", "about-kicker mb-3", PAGE_KICKER));
     heading.appendChild(element("h1", "about-title", page.title));
 
     if (page.subtitle) {
-      heading.appendChild(element("p", "about-subtitle", page.subtitle));
+      heading.appendChild(
+        element("p", "about-subtitle mt-3 mb-0", page.subtitle)
+      );
     }
 
     if (page.intro.length > 0) {
-      appendParagraphs(heading, page.intro, "about-intro");
+      appendParagraphs(heading, page.intro, "about-intro mt-3 mb-0");
     }
 
     container.appendChild(heading);
@@ -384,7 +386,7 @@
 
     if (link.href.startsWith(noticePrefix)) {
       const message = link.href.slice(noticePrefix.length).trim();
-      const anchor = element("a", "link-card h-100", link.label);
+      const anchor = element("a", "link-card h-100 gap-3 py-3", link.label);
       anchor.href = "#";
       anchor.setAttribute("aria-label", `${link.label}；${message}`);
       anchor.addEventListener("click", (event) => {
@@ -404,7 +406,7 @@
     if (!safe) {
       const disabled = element(
         "div",
-        "link-card link-card-disabled h-100",
+        "link-card link-card-disabled h-100 gap-3 py-3",
         link.label
       );
       disabled.setAttribute("aria-disabled", "true");
@@ -412,7 +414,7 @@
       return column;
     }
 
-    const anchor = element("a", "link-card h-100", link.label);
+    const anchor = element("a", "link-card h-100 gap-3 py-3", link.label);
     anchor.href = safe.href;
 
     if (safe.newTab) {
@@ -431,10 +433,10 @@
   function buildSection(section, index) {
     const wrapper = element(
       "section",
-      `content-section ${index % 2 === 1 ? "section-tinted" : ""}`
+      `content-section py-4 ${index % 2 === 1 ? "section-tinted" : ""}`
     );
     const container = pageContainer();
-    const headingRow = element("div", "section-heading");
+    const headingRow = element("div", "section-heading gap-3 mb-3 pb-3");
     const sectionNumber = element(
       "span",
       "section-number",
@@ -448,7 +450,7 @@
     appendParagraphs(container, section.paragraphs, "section-description");
 
     if (section.links.length > 0) {
-      const row = element("div", "row gx-3 gx-lg-4 link-list");
+      const row = element("div", "row gx-3 gx-lg-4 gy-2 link-list");
       section.links.forEach((link) => row.appendChild(buildLinkCard(link)));
       container.appendChild(row);
     }
@@ -458,14 +460,17 @@
   }
 
   function buildAboutSection(section, index) {
-    const wrapper = element("section", "about-content-section");
+    const wrapper = element("section", "about-content-section py-4");
     const container = pageContainer();
 
     if (section.paragraphs.length > 1) {
       container.classList.add("multi-paragraph-section");
     }
 
-    const headingRow = element("div", "section-heading about-section-heading");
+    const headingRow = element(
+      "div",
+      "section-heading about-section-heading gap-3 mb-3 pb-3"
+    );
     const sectionNumber = element(
       "span",
       "section-number",
@@ -482,7 +487,10 @@
       const grid = element("div", "experience-grid");
 
       section.items.forEach((item, itemIndex) => {
-        const article = element("article", "experience-item");
+        const article = element(
+          "article",
+          "experience-item column-gap-3 py-4"
+        );
         const number = element(
           "span",
           "experience-number",
@@ -492,7 +500,11 @@
 
         number.setAttribute("aria-hidden", "true");
         copy.appendChild(element("h3", "experience-title", item.title));
-        appendParagraphs(copy, item.paragraphs, "experience-description");
+        appendParagraphs(
+          copy,
+          item.paragraphs,
+          "experience-description mt-3 mb-0"
+        );
         article.appendChild(number);
         article.appendChild(copy);
 
@@ -520,7 +532,10 @@
         });
 
         if (itemRegularLinks.length > 0) {
-          const row = element("div", "row gx-3 link-list experience-link-row");
+          const row = element(
+            "div",
+            "row gx-3 gy-2 link-list experience-link-row"
+          );
           itemRegularLinks.forEach((link) => row.appendChild(buildLinkCard(link)));
           article.appendChild(row);
         }
@@ -549,7 +564,7 @@
     });
 
     if (regularLinks.length > 0) {
-      const row = element("div", "row gx-3 gx-lg-4 link-list");
+      const row = element("div", "row gx-3 gx-lg-4 gy-2 link-list");
       regularLinks.forEach((link) => row.appendChild(buildLinkCard(link)));
       container.appendChild(row);
     }
@@ -582,13 +597,15 @@
 
   function renderError() {
     const section = element("section", "error-state container-fluid py-3");
-    const card = element("div", "error-card");
+    const card = element("div", "error-card p-3");
     card.setAttribute("role", "alert");
-    card.appendChild(element("p", "error-label", "內容暫時無法載入"));
+    card.appendChild(
+      element("p", "error-label mb-3", "內容暫時無法載入")
+    );
     card.appendChild(
       element(
         "h1",
-        "error-title",
+        "error-title mb-3",
         "網站沒有白屏，但需要請維護者看一下。"
       )
     );

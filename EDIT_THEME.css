@@ -14,7 +14,7 @@
   --button-radius: 1rem;
   --card-shadow: 10px 10px 0 rgba(0, 0, 0, 0.18);
   --about-highlight: #f0d348;
-  --vertical-space: 1rem;
-  --title-space-before: 1.5rem;
+  --vertical-space: 1.5rem;
+  --title-space-before: 3rem;
   --compact-space: 0.5rem;
 }

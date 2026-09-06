@@ -15,22 +15,28 @@
 
 ---
 
-## 社團活動剪影
-
-![2024年社團嘉年華魔術社攤位](images/about-club-fair-2024.jpg)
-
----
-
 ## 六大魔術體驗
 
 ### 魔術社課
 
+- [觀看魔術社課貼文](https://www.instagram.com/p/DYQqXmCk5BO)
+
 ### 期初茶會
+
+- [觀看期初茶會貼文](https://www.instagram.com/p/DVgDcDokdmF)
 
 ### 街頭魔術行動
 
+- [觀看街頭魔術行動貼文](https://www.instagram.com/p/DROTPrUkduB)
+
 ### 大型魔術晚會
+
+- [觀看大型魔術晚會貼文](https://www.instagram.com/tv/CkS6QW0tYpQ)
 
 ### 跨校魔術交流
 
+- [觀看跨校魔術交流貼文](https://www.instagram.com/p/DYa5IBzk8mm)
+
 ### 魔術圈活動遊
+
+![2026年幻術大仙年度公演合照](images/about-magic-community-2026.jpg)

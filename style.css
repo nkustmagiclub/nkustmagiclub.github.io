@@ -239,6 +239,7 @@ a {
   grid-template-columns: 3.25rem minmax(0, 1fr);
   gap: 1rem;
   align-items: center;
+  align-content: start;
   min-height: 7.5rem;
   padding: 1.35rem 0;
   border-top: 2px solid var(--line-color);
@@ -266,6 +267,26 @@ a {
 .experience-description {
   margin: 0.55rem 0 0;
   color: var(--text-muted);
+}
+
+.experience-image-figure {
+  grid-column: 1 / -1;
+  width: 100%;
+  margin: 0.5rem 0 0;
+}
+
+.experience-image-figure.detail-image-portrait {
+  width: 100%;
+}
+
+.experience-instagram-embed,
+.experience-link-row {
+  grid-column: 1 / -1;
+}
+
+.experience-instagram-embed {
+  width: 100%;
+  margin: 0.5rem 0 0;
 }
 
 .detail-image-figure {

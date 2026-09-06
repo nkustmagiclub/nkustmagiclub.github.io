@@ -113,6 +113,8 @@
         currentItem = {
           title: heading,
           paragraphs: [],
+          images: [],
+          links: [],
         };
         currentSection.items.push(currentItem);
         return;
@@ -122,7 +124,8 @@
         const images = findImages(token.tokens);
 
         if (currentSection && images.length > 0) {
-          currentSection.images.push(...images);
+          if (currentItem) currentItem.images.push(...images);
+          else currentSection.images.push(...images);
           return;
         }
 
@@ -136,13 +139,15 @@
       }
 
       if (token.type === "list" && currentSection) {
+        const links = currentItem ? currentItem.links : currentSection.links;
+
         token.items.forEach((item) => {
           const link = findLink(item.tokens);
           if (!link) {
             const label = plainText(item.tokens) || String(item.text || "").trim();
 
             if (label) {
-              currentSection.links.push({
+              links.push({
                 label,
                 href: "",
               });
@@ -151,7 +156,7 @@
           }
 
           const label = plainText(link.tokens) || link.text || "前往連結";
-          currentSection.links.push({
+          links.push({
             label: label.trim(),
             href: String(link.href || "").trim(),
           });
@@ -203,7 +208,7 @@
     try {
       const url = new URL(rawHref);
       const hostname = url.hostname.toLowerCase();
-      const match = url.pathname.match(/^\/p\/([^/]+)/);
+      const match = url.pathname.match(/^\/(p|reel|tv)\/([^/]+)/);
 
       if (
         !["instagram.com", "www.instagram.com"].includes(hostname) ||
@@ -212,7 +217,7 @@
         return null;
       }
 
-      return `https://www.instagram.com/p/${match[1]}/embed/`;
+      return `https://www.instagram.com/${match[1]}/${match[2]}/embed/`;
     } catch (_error) {
       return null;
     }
@@ -434,6 +439,36 @@
         appendParagraphs(copy, item.paragraphs, "experience-description");
         article.appendChild(number);
         article.appendChild(copy);
+
+        item.images.forEach((image) => {
+          const figure = buildContentImage(image);
+
+          if (figure) {
+            figure.classList.add("experience-image-figure");
+            article.classList.add("experience-item-with-image");
+            article.appendChild(figure);
+          }
+        });
+
+        const itemInstagramLinks = item.links.filter((link) =>
+          instagramEmbedUrl(link.href)
+        );
+        const itemRegularLinks = item.links.filter(
+          (link) => !itemInstagramLinks.includes(link)
+        );
+
+        itemInstagramLinks.forEach((link) => {
+          const embed = buildInstagramEmbed(link);
+          embed.classList.add("experience-instagram-embed");
+          article.appendChild(embed);
+        });
+
+        if (itemRegularLinks.length > 0) {
+          const row = element("div", "row g-3 mt-2 experience-link-row");
+          itemRegularLinks.forEach((link) => row.appendChild(buildLinkCard(link)));
+          article.appendChild(row);
+        }
+
         grid.appendChild(article);
       });
 

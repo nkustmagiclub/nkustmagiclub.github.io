@@ -7,6 +7,7 @@
 - 只有文字會變成尚未開放的卡片
 - [卡片名稱](完整網址)
 - [卡片名稱](notice:提示文字) 會在點擊後顯示提示
+日期請統一使用 MM/DD（星期）的格式，例如 09/22（二）。
 
 不使用的連結整行刪掉即可。請不要改檔名。
 -->
@@ -52,3 +53,4 @@
 - [Instagram](https://www.instagram.com/nkust_magiclub/)
 - [Facebook](https://www.facebook.com/NKUSTmagic/)
 - [Threads](https://www.threads.com/@nkust_magiclub)
+

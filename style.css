@@ -332,7 +332,7 @@ a {
 
 .instagram-embed-fallback {
   display: inline-block;
-  margin-top: var(--vertical-space);
+  margin-top: 0.25rem;
   font-weight: 900;
   text-underline-offset: 0.2em;
 }

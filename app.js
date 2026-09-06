@@ -4,7 +4,7 @@
   const PAGE_KIND = document.body.dataset.page || "home";
   const CONTENT_FILE = document.body.dataset.contentFile || "EDIT_CONTENT.md";
   const PAGE_KICKER = document.body.dataset.kicker || "02 / ABOUT";
-  const PAGE_VERSION = "20260906-spacing-scale";
+  const PAGE_VERSION = "20260906-fallback-space";
   const app = document.getElementById("app");
   const copyrightYear = document.getElementById("copyright-year");
 

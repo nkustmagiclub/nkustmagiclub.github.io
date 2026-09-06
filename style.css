@@ -52,7 +52,7 @@ a {
 .site-hero {
   position: relative;
   display: grid;
-  min-height: min(760px, 86vh);
+  min-height: var(--hero-height);
   align-items: center;
   overflow: hidden;
   padding: var(--title-space-before) 0 var(--vertical-space);
@@ -143,6 +143,9 @@ a {
 
 .about-hero {
   position: relative;
+  display: grid;
+  min-height: var(--hero-height);
+  align-items: center;
   overflow: hidden;
   padding: var(--vertical-space) 0;
   border-bottom: 0.75rem solid var(--surface-soft);
@@ -609,10 +612,6 @@ a {
 }
 
 @media (max-width: 575.98px) {
-  .site-hero {
-    min-height: auto;
-  }
-
   .site-footer .container-fluid {
     flex-direction: row !important;
     align-items: center;

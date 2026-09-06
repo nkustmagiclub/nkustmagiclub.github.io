@@ -582,6 +582,25 @@ a {
     min-height: auto;
   }
 
+  .site-footer .container {
+    flex-direction: row !important;
+    align-items: center;
+    justify-content: space-between;
+  }
+
+  .footer-copyright {
+    font-size: 0.78rem;
+  }
+
+  .footer-note {
+    width: 40%;
+    flex-basis: 40%;
+  }
+
+  .footer-logo-link {
+    padding: 0.35rem 0.45rem;
+  }
+
   .section-description {
     margin-left: 0;
   }

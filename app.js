@@ -107,7 +107,17 @@
       if (token.type === "list" && currentSection) {
         token.items.forEach((item) => {
           const link = findLink(item.tokens);
-          if (!link) return;
+          if (!link) {
+            const label = plainText(item.tokens) || String(item.text || "").trim();
+
+            if (label) {
+              currentSection.links.push({
+                label,
+                href: "",
+              });
+            }
+            return;
+          }
 
           const label = plainText(link.tokens) || link.text || "前往連結";
           currentSection.links.push({

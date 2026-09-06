@@ -4,7 +4,7 @@
   const PAGE_KIND = document.body.dataset.page || "home";
   const CONTENT_FILE = document.body.dataset.contentFile || "EDIT_CONTENT.md";
   const PAGE_KICKER = document.body.dataset.kicker || "02 / ABOUT";
-  const PAGE_VERSION = "20260906-unified-hero";
+  const PAGE_VERSION = "20260906-bootstrap-hero";
   const app = document.getElementById("app");
   const copyrightYear = document.getElementById("copyright-year");
 
@@ -321,7 +321,10 @@
   }
 
   function buildHero(page) {
-    const hero = element("header", "site-hero");
+    const hero = element(
+      "header",
+      "site-hero d-flex align-items-center py-4 py-lg-5"
+    );
     const container = pageContainer("position-relative");
     const grid = element("div", "hero-grid");
     const copy = element("div", "hero-copy");
@@ -344,7 +347,10 @@
   }
 
   function buildAboutHero(page) {
-    const hero = element("header", "about-hero");
+    const hero = element(
+      "header",
+      "about-hero d-flex align-items-center py-4 py-lg-5"
+    );
     const container = pageContainer();
     const navigation = element("nav", "about-navigation");
     const backLink = element("a", "about-back-link", "← 回首頁");

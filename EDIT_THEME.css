@@ -18,5 +18,4 @@
   --vertical-space: 1rem;
   --title-space-before: 1.5rem;
   --compact-space: 0.5rem;
-  --hero-height: clamp(20rem, 48svh, 30rem);
 }

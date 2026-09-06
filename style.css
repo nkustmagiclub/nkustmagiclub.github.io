@@ -51,11 +51,7 @@ a {
 
 .site-hero {
   position: relative;
-  display: grid;
-  min-height: var(--hero-height);
-  align-items: center;
   overflow: hidden;
-  padding: var(--title-space-before) 0 var(--vertical-space);
   border-bottom: 2px solid var(--surface);
   color: var(--surface);
   background: var(--club-primary-strong);
@@ -143,11 +139,7 @@ a {
 
 .about-hero {
   position: relative;
-  display: grid;
-  min-height: var(--hero-height);
-  align-items: center;
   overflow: hidden;
-  padding: var(--vertical-space) 0;
   border-bottom: 0.75rem solid var(--surface-soft);
   color: var(--surface);
   background: var(--club-primary-strong);

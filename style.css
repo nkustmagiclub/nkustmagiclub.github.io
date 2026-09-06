@@ -289,7 +289,7 @@ a {
 }
 
 .experience-image-figure.detail-image-portrait {
-  width: 100%;
+  width: 95%;
 }
 
 .experience-instagram-embed,
@@ -303,15 +303,17 @@ a {
 }
 
 .detail-image-figure {
-  width: min(100%, 45rem);
-  margin: 1.75rem 0 0 2.65rem;
+  width: 95%;
+  max-width: none;
+  margin: 1.75rem auto 0;
 }
 
 .detail-image-portrait {
   --media-frame-padding: clamp(0.75rem, 2vw, 1.25rem);
 
   position: relative;
-  width: min(100%, 45rem);
+  width: 95%;
+  max-width: none;
   aspect-ratio: 4 / 3;
   overflow: hidden;
   padding: 0;
@@ -338,15 +340,16 @@ a {
 }
 
 .instagram-embed-shell {
-  width: min(calc(100% - 2.65rem), 45rem);
-  margin: 1.75rem 0 0 2.65rem;
+  width: 95%;
+  max-width: none;
+  margin: 1.75rem auto 0;
 }
 
 .instagram-embed-frame {
   display: block;
   width: 100% !important;
   min-width: 0 !important;
-  max-width: 720px !important;
+  max-width: none !important;
   margin: 0 !important;
   border: 0;
   border-radius: 0.9rem;
@@ -356,7 +359,7 @@ a {
 .instagram-embed-shell iframe {
   display: block;
   width: 100% !important;
-  max-width: 720px !important;
+  max-width: none !important;
   margin: 0 !important;
 }
 
@@ -620,15 +623,6 @@ a {
   }
 
   .section-description {
-    margin-left: 0;
-  }
-
-  .instagram-embed-shell {
-    width: 100%;
-    margin-left: 0;
-  }
-
-  .detail-image-figure {
     margin-left: 0;
   }
 

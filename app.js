@@ -4,7 +4,7 @@
   const PAGE_KIND = document.body.dataset.page || "home";
   const CONTENT_FILE = document.body.dataset.contentFile || "EDIT_CONTENT.md";
   const PAGE_KICKER = document.body.dataset.kicker || "02 / ABOUT";
-  const PAGE_VERSION = "20260906-all-media-720";
+  const PAGE_VERSION = "20260906-media-width-95";
   const app = document.getElementById("app");
   const copyrightYear = document.getElementById("copyright-year");
 

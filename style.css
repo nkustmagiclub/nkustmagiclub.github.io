@@ -280,13 +280,7 @@ a {
 
 .experience-image-figure {
   grid-column: 1 / -1;
-  width: 100%;
   margin-top: var(--vertical-space);
-}
-
-.experience-image-figure.detail-image-portrait {
-  width: 95%;
-  max-width: 960px;
 }
 
 .experience-instagram-embed,
@@ -305,35 +299,11 @@ a {
   margin: var(--vertical-space) auto 0;
 }
 
-.detail-image-portrait {
-  --media-frame-padding: clamp(0.75rem, 2vw, 1.25rem);
-
-  position: relative;
-  width: 95%;
-  max-width: 960px;
-  aspect-ratio: 4 / 3;
-  overflow: hidden;
-  padding: 0;
-  background: var(--media-background);
-}
-
 .detail-image {
   display: block;
   width: 100%;
   height: auto;
   border-radius: 0.9rem;
-}
-
-.detail-image-portrait .detail-image {
-  position: absolute;
-  inset: var(--media-frame-padding);
-  width: calc(100% - var(--media-frame-padding) - var(--media-frame-padding));
-  max-width: none;
-  height: calc(100% - var(--media-frame-padding) - var(--media-frame-padding));
-  max-height: none;
-  border-radius: 0.45rem;
-  object-fit: contain;
-  object-position: center;
 }
 
 .instagram-embed-shell {

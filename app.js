@@ -4,7 +4,7 @@
   const PAGE_KIND = document.body.dataset.page || "home";
   const CONTENT_FILE = document.body.dataset.contentFile || "EDIT_CONTENT.md";
   const PAGE_KICKER = document.body.dataset.kicker || "02 / ABOUT";
-  const PAGE_VERSION = "20260906-bootstrap-hero";
+  const PAGE_VERSION = "20260906-natural-photo";
   const app = document.getElementById("app");
   const copyrightYear = document.getElementById("copyright-year");
 
@@ -239,6 +239,11 @@
     try {
       const url = new URL(rawSrc, window.location.href);
       if (!["http:", "https:"].includes(url.protocol)) return null;
+
+      if (url.origin === window.location.origin) {
+        url.searchParams.set("v", PAGE_VERSION);
+      }
+
       return url.href;
     } catch (_error) {
       return null;
@@ -254,11 +259,6 @@
     node.alt = image.alt || "活動圖片";
     node.loading = "lazy";
     node.decoding = "async";
-    node.addEventListener("load", () => {
-      if (node.naturalHeight > node.naturalWidth) {
-        figure.classList.add("detail-image-portrait");
-      }
-    });
     node.src = src;
     figure.appendChild(node);
     return figure;

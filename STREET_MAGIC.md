@@ -22,6 +22,8 @@ Instagram 貼文使用：- [貼文名稱](完整網址)
 
 ![09/10（四）魔術社街魔行動現場。](images/street-magic-2026-09-10.jpg)
 
+![09/10（四）觀眾近距離體驗街頭魔術。](images/street-magic-2026-09-10-02.jpg)
+
 ---
 
 ## Instagram 街魔紀錄

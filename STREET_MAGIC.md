@@ -20,6 +20,8 @@ Instagram 貼文使用：- [貼文名稱](完整網址)
 
 ## 現場紀錄
 
+![09/09（三）街魔行動宣傳看板。](images/street-magic-2026-09-09-banner.jpg)
+
 ![09/09（三）魔術社街魔行動現場。](images/street-magic-2026-09-09.jpg)
 
 ![09/10（四）魔術社街魔行動現場。](images/street-magic-2026-09-10.jpg)
@@ -32,3 +34,4 @@ Instagram 貼文使用：- [貼文名稱](完整網址)
 
 - [街頭魔術紀錄（一）](https://www.instagram.com/reel/DRduPDLEVk-)
 - [街頭魔術紀錄（二）](https://www.instagram.com/p/DS2bn1rkUZc)
+

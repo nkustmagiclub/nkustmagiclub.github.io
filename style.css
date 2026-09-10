@@ -298,6 +298,65 @@ a {
   border-radius: 0.9rem;
 }
 
+.photo-carousel {
+  width: 95%;
+  max-width: 960px;
+  margin-inline: auto;
+}
+
+.photo-carousel-viewport {
+  overflow: hidden;
+  border-radius: 0.9rem;
+}
+
+.photo-carousel-slide {
+  margin: 0;
+}
+
+.photo-carousel-image {
+  display: block;
+  width: 100%;
+  height: auto;
+  border-radius: 0.9rem;
+}
+
+.photo-carousel-caption,
+.photo-carousel-counter {
+  color: var(--text-muted);
+  font-size: clamp(0.65rem, 1.8vw, 0.75rem);
+  line-height: 1.4;
+}
+
+.photo-carousel-controls {
+  display: flex;
+  align-items: center;
+  justify-content: flex-end;
+  gap: 0.5rem;
+}
+
+.photo-carousel-button {
+  display: grid;
+  width: 2rem;
+  height: 2rem;
+  padding: 0;
+  place-items: center;
+  border: 1px solid currentColor;
+  border-radius: 999px;
+  color: var(--text-main);
+  background: transparent;
+  font-weight: 900;
+}
+
+.photo-carousel-button:hover {
+  color: var(--surface);
+  background: var(--club-primary-strong);
+}
+
+.photo-carousel-button:focus-visible {
+  outline: 3px solid var(--about-highlight);
+  outline-offset: 2px;
+}
+
 .instagram-embed-shell {
   width: 95%;
   max-width: 960px;

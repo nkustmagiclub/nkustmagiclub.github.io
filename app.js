@@ -4,7 +4,8 @@
   const PAGE_KIND = document.body.dataset.page || "home";
   const CONTENT_FILE = document.body.dataset.contentFile || "EDIT_CONTENT.md";
   const PAGE_KICKER = document.body.dataset.kicker || "02 / ABOUT";
-  const PAGE_VERSION = "20260907-bootstrap-spacing";
+  const PAGE_VERSION = "20260910-photo-carousel";
+  const IMAGE_LAYOUT = document.body.dataset.imageLayout || "stack";
   const app = document.getElementById("app");
   const copyrightYear = document.getElementById("copyright-year");
 
@@ -262,6 +263,79 @@
     node.src = src;
     figure.appendChild(node);
     return figure;
+  }
+
+  function buildPhotoCarousel(images, sectionTitle) {
+    const carousel = element("div", "photo-carousel mt-3");
+    const viewport = element("div", "photo-carousel-viewport");
+    const slides = images
+      .map((image, index) => {
+        const src = normalizeImageSource(image.src);
+        if (!src) return null;
+
+        const captionText =
+          image.alt || `${sectionTitle || "現場紀錄"}照片 ${index + 1}`;
+        const figure = element("figure", "photo-carousel-slide m-0");
+        const node = element("img", "photo-carousel-image");
+        const caption = element(
+          "figcaption",
+          "photo-carousel-caption mt-1",
+          captionText
+        );
+
+        node.alt = captionText;
+        node.loading = index === 0 ? "eager" : "lazy";
+        node.decoding = "async";
+        node.src = src;
+        figure.append(node, caption);
+        return figure;
+      })
+      .filter(Boolean);
+
+    if (slides.length === 0) return null;
+
+    let currentIndex = 0;
+    const controls = element("div", "photo-carousel-controls mt-1");
+    const counter = element("span", "photo-carousel-counter");
+    const previous = element("button", "photo-carousel-button", "←");
+    const next = element("button", "photo-carousel-button", "→");
+
+    carousel.setAttribute(
+      "aria-label",
+      `${sectionTitle || "現場紀錄"}照片輪播`
+    );
+    counter.setAttribute("aria-live", "polite");
+    previous.type = "button";
+    previous.setAttribute("aria-label", "上一張照片");
+    next.type = "button";
+    next.setAttribute("aria-label", "下一張照片");
+
+    function showSlide(nextIndex) {
+      currentIndex = (nextIndex + slides.length) % slides.length;
+      slides.forEach((slide, index) => {
+        slide.hidden = index !== currentIndex;
+      });
+      counter.textContent = `${currentIndex + 1} / ${slides.length}`;
+    }
+
+    slides.forEach((slide) => viewport.appendChild(slide));
+    previous.addEventListener("click", () => showSlide(currentIndex - 1));
+    next.addEventListener("click", () => showSlide(currentIndex + 1));
+
+    if (slides.length > 1) {
+      controls.append(previous, counter, next);
+      carousel.tabIndex = 0;
+      carousel.addEventListener("keydown", (event) => {
+        if (event.key === "ArrowLeft") showSlide(currentIndex - 1);
+        if (event.key === "ArrowRight") showSlide(currentIndex + 1);
+      });
+    } else {
+      controls.appendChild(counter);
+    }
+
+    showSlide(0);
+    carousel.append(viewport, controls);
+    return carousel;
   }
 
   function buildInstagramEmbed(link) {
@@ -546,10 +620,15 @@
       container.appendChild(grid);
     }
 
-    section.images.forEach((image) => {
-      const figure = buildContentImage(image);
-      if (figure) container.appendChild(figure);
-    });
+    if (IMAGE_LAYOUT === "carousel" && section.images.length > 0) {
+      const carousel = buildPhotoCarousel(section.images, section.title);
+      if (carousel) container.appendChild(carousel);
+    } else {
+      section.images.forEach((image) => {
+        const figure = buildContentImage(image);
+        if (figure) container.appendChild(figure);
+      });
+    }
 
     const instagramLinks =
       PAGE_KIND === "event"

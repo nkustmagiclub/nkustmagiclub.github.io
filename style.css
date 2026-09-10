@@ -306,7 +306,7 @@ a {
 
 .photo-carousel-viewport {
   overflow: hidden;
-  border-radius: 0.9rem;
+  border-radius: 0;
 }
 
 .photo-carousel-slide {
@@ -317,7 +317,7 @@ a {
   display: block;
   width: 100%;
   height: auto;
-  border-radius: 0.9rem;
+  border-radius: 0;
 }
 
 .photo-carousel-caption,
@@ -650,3 +650,4 @@ a {
     transition-duration: 0.01ms !important;
   }
 }
+

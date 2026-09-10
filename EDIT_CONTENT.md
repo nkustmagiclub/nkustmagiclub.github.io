@@ -28,6 +28,7 @@
 要顯示「近期活動」說明時，把文字寫在這段註解結束後、連結之前。
 -->
 
+- [09/09（三）- 09/16（三）《魔術社街魔行動》 奇蹟現場直擊](street-magic.html)
 - [09/22（二）《社團嘉年華》看魔術蓋印章](club-fair.html)
 - [09/23（三）《魔術社期初茶會》報名](https://docs.google.com/forms/d/e/1FAIpQLSepGFE_8Y1ZGdZFlZdbK7QMRRTJrIsktk_X42YmV_9exn7iQg/viewform?usp=send_form)
 - [10/17（六）國際魔術晚會《阿本洛特》報名](https://forms.gle/djtMv83iiyGjRZ8K8)

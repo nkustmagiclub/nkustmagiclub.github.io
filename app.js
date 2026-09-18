@@ -4,7 +4,7 @@
   const PAGE_KIND = document.body.dataset.page || "home";
   const CONTENT_FILE = document.body.dataset.contentFile || "EDIT_CONTENT.md";
   const PAGE_KICKER = document.body.dataset.kicker || "02 / ABOUT";
-  const PAGE_VERSION = "20260910-banner-photo";
+  const PAGE_VERSION = "20260918-activities";
   const IMAGE_LAYOUT = document.body.dataset.imageLayout || "stack";
   const app = document.getElementById("app");
   const copyrightYear = document.getElementById("copyright-year");
@@ -62,6 +62,61 @@
     });
 
     return images;
+  }
+
+  function eventEndDate(raw) {
+    const match = String(raw || "").match(/<!--\s*until:(\d{4}-\d{2}-\d{2})\s*-->/);
+    if (!match) return "";
+    const date = new Date(`${match[1]}T00:00:00Z`);
+    return Number.isFinite(date.getTime()) && date.toISOString().slice(0, 10) === match[1]
+      ? match[1]
+      : "";
+  }
+
+  function taiwanToday() {
+    const parts = new Intl.DateTimeFormat("en-US", {
+      timeZone: "Asia/Taipei",
+      year: "numeric",
+      month: "2-digit",
+      day: "2-digit",
+    }).formatToParts(new Date());
+    const part = (type) => parts.find((item) => item.type === type).value;
+    return `${part("year")}-${part("month")}-${part("day")}`;
+  }
+
+  function prepareActivities(page, today) {
+    const activities = page.sections.find((section) => section.title === "近期活動");
+    if (!activities) return page;
+
+    const ended = (link) => Boolean(link.until && link.until < today);
+    const upcoming = activities.links.filter((link) => !ended(link));
+    const past = activities.links.filter(ended).sort((a, b) => b.until.localeCompare(a.until));
+    const recentSection = {
+      ...activities,
+      links: upcoming,
+      paragraphs: upcoming.length ? activities.paragraphs : ["新的活動準備中，先看看我們的過往紀錄。"],
+    };
+
+    if (PAGE_KIND === "activities") {
+      return {
+        title: "更多活動",
+        subtitle: "近期活動與過往紀錄",
+        intro: ["從街頭魔術到舞台演出，活動資訊與現場紀錄都在這裡。"],
+        sections: [
+          recentSection,
+          {
+            title: "過往活動",
+            paragraphs: past.length ? ["以下活動已結束，仍可查看活動資訊與紀錄。"] : ["活動結束後，會在這裡保留紀錄。"],
+            links: past.map((link) => ({ ...link, label: `${link.label.replace(/報名\s*$/, "")}（已結束）` })),
+            items: [],
+            images: [],
+          },
+        ],
+      };
+    }
+
+    recentSection.moreActivities = true;
+    return { ...page, sections: page.sections.map((section) => section === activities ? recentSection : section) };
   }
 
   function parseContent(markdown) {
@@ -161,6 +216,7 @@
           links.push({
             label: label.trim(),
             href: String(link.href || "").trim(),
+            until: eventEndDate(item.raw),
           });
         });
       }
@@ -433,6 +489,11 @@
     backLink.href = `index.html?v=${PAGE_VERSION}`;
     backLink.setAttribute("aria-label", "返回高科大魔術社首頁");
     navigation.appendChild(backLink);
+    if (PAGE_KIND === "event") {
+      const activitiesLink = element("a", "about-back-link", "更多活動");
+      activitiesLink.href = `activities.html?v=${PAGE_VERSION}`;
+      navigation.appendChild(activitiesLink);
+    }
     container.appendChild(navigation);
 
     const heading = element("div", "about-heading mt-4");
@@ -529,12 +590,19 @@
       container.appendChild(row);
     }
 
+    if (section.moreActivities) {
+      const more = element("a", "more-activities-link mt-3", "更多活動・查看過往紀錄 →");
+      more.href = `activities.html?v=${PAGE_VERSION}`;
+      container.appendChild(more);
+    }
+
     wrapper.appendChild(container);
     return wrapper;
   }
 
   function buildAboutSection(section, index) {
     const wrapper = element("section", "about-content-section py-4");
+    if (section.title === "現場紀錄") wrapper.id = "event-records";
     const container = pageContainer();
 
     if (section.paragraphs.length > 1) {
@@ -658,7 +726,7 @@
       : page.title;
 
     const fragment = document.createDocumentFragment();
-    if (PAGE_KIND === "about" || PAGE_KIND === "event") {
+    if (PAGE_KIND === "about" || PAGE_KIND === "event" || PAGE_KIND === "activities") {
       fragment.appendChild(buildAboutHero(page));
       page.sections.forEach((section, index) => {
         fragment.appendChild(buildAboutSection(section, index));
@@ -707,7 +775,28 @@
       }
 
       const markdown = await response.text();
-      renderPage(parseContent(markdown));
+      const page = parseContent(markdown);
+      const hasActivities = PAGE_KIND === "home" || PAGE_KIND === "activities";
+      let lastDate = taiwanToday();
+      renderPage(hasActivities ? prepareActivities(page, lastDate) : page);
+
+      if (window.location.hash === "#event-records") {
+        document.getElementById("event-records")?.scrollIntoView();
+      }
+
+      if (hasActivities) {
+        const refreshDate = () => {
+          const today = taiwanToday();
+          if (today !== lastDate) {
+            lastDate = today;
+            renderPage(prepareActivities(page, today));
+          }
+        };
+        window.setInterval(refreshDate, 60000);
+        document.addEventListener("visibilitychange", () => {
+          if (!document.hidden) refreshDate();
+        });
+      }
     } catch (error) {
       console.error("Unable to load site content.", error);
       renderError();

@@ -163,7 +163,23 @@ a {
 
 .about-navigation {
   display: flex;
+  flex-wrap: wrap;
+  gap: 0.75rem;
   justify-content: flex-start;
+}
+
+.more-activities-link {
+  display: inline-flex;
+  align-items: center;
+  min-height: 2.75rem;
+  padding: 0.5rem 0.25rem;
+  font-weight: 900;
+  text-underline-offset: 0.3em;
+}
+
+.more-activities-link:focus-visible {
+  outline: 3px solid currentColor;
+  outline-offset: 3px;
 }
 
 .about-back-link {

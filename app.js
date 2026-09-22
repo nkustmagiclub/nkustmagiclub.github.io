@@ -484,10 +484,14 @@
     );
     const container = pageContainer();
     const navigation = element("nav", "about-navigation");
-    const backLink = element("a", "about-back-link", "← 回首頁");
+    const customBackLink = document.body.dataset.backHref
+      ? normalizeLink(document.body.dataset.backHref)
+      : null;
+    const backLabel = document.body.dataset.backLabel || "← 回首頁";
+    const backLink = element("a", "about-back-link", backLabel);
 
-    backLink.href = `index.html?v=${PAGE_VERSION}`;
-    backLink.setAttribute("aria-label", "返回高科大魔術社首頁");
+    backLink.href = customBackLink ? customBackLink.href : `index.html?v=${PAGE_VERSION}`;
+    backLink.setAttribute("aria-label", customBackLink ? backLabel : "返回高科大魔術社首頁");
     navigation.appendChild(backLink);
     if (PAGE_KIND === "event") {
       const activitiesLink = element("a", "about-back-link", "更多活動");
@@ -805,4 +809,3 @@
 
   start();
 })();
-

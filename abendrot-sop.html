@@ -150,6 +150,18 @@
       font-size: .9rem;
     }
     .small { color: var(--text-muted); font-size: .9rem; }
+
+    /* Numerals use a normal-width UI font so times, dates and section numbers
+       do not inherit the condensed look of Arial Narrow. */
+    .section-no,
+    .meta-value,
+    .time,
+    .kicker,
+    table td,
+    table th {
+      font-family: "Segoe UI", "Noto Sans TC", system-ui, -apple-system, BlinkMacSystemFont, sans-serif;
+      font-variant-numeric: tabular-nums;
+    }
     @media (max-width: 820px) {
       .meta, .grid-2 { grid-template-columns: 1fr; }
       table { display: block; overflow-x: auto; }

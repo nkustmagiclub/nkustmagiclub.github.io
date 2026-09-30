@@ -43,95 +43,107 @@
   document.addEventListener('click', event => {
     if (!event.target.closest('.site-header') && !menu.hidden) closeMenu();
   });
-  window.matchMedia('(min-width: 1351px)').addEventListener('change', event => {
+  window.matchMedia('(min-width: 1101px)').addEventListener('change', event => {
     if (event.matches) closeMenu();
   });
 
-  // Deliberate resistance with a longer ease-out in the opening scene only.
-  let scrollFrame = 0;
-  let scrollTarget = window.scrollY;
-  let scrollPosition = window.scrollY;
-  let lastFrameTime = 0;
+  // One deliberate downward gesture leaves the opening scene for the story.
+  const header = document.querySelector('.site-header');
+  const story = document.getElementById('story');
+  let transitionFrame = 0;
+  let transitioning = false;
+  let gestureUntil = 0;
+  let lastWheelTime = 0;
+  let wheelDistance = 0;
   let touch = null;
-  const heroBoundary = () => Math.max(1, hero.offsetTop + hero.offsetHeight - document.querySelector('.site-header').offsetHeight);
-  const canDamp = () => !reduceMotion.matches && menu.hidden && window.scrollY < heroBoundary();
-  const resistance = () => .32 + .58 * Math.pow(Math.min(1, window.scrollY / heroBoundary()), 2);
-  function stopScroll() {
-    window.cancelAnimationFrame(scrollFrame);
-    scrollFrame = 0;
-    lastFrameTime = 0;
-    scrollTarget = window.scrollY;
-    scrollPosition = window.scrollY;
+  const inOpening = () => menu.hidden && window.scrollY < hero.offsetTop + hero.offsetHeight - header.offsetHeight - 2;
+  const storyTop = () => Math.max(0, story.offsetTop - header.offsetHeight - 16);
+  function stopTransition() {
+    window.cancelAnimationFrame(transitionFrame);
+    transitionFrame = 0;
+    transitioning = false;
+    gestureUntil = 0;
+    wheelDistance = 0;
+    touch = null;
   }
-  function easeScroll(time) {
-    const elapsed = lastFrameTime ? Math.min(time - lastFrameTime, 40) : 16.7;
-    lastFrameTime = time;
-    const distance = scrollTarget - scrollPosition;
-    if (Math.abs(distance) < .5) {
-      window.scrollTo({ top: scrollTarget, behavior: 'instant' });
-      stopScroll();
+  function enterStory() {
+    const target = storyTop();
+    const start = window.scrollY;
+    const started = performance.now();
+    wheelDistance = 0;
+    gestureUntil = started + 800;
+    if (reduceMotion.matches) {
+      window.scrollTo({ top: target, behavior: 'instant' });
       return;
     }
-    scrollPosition += distance * (1 - Math.exp(-elapsed / 190));
-    window.scrollTo({ top: scrollPosition, behavior: 'instant' });
-    scrollFrame = window.requestAnimationFrame(easeScroll);
-  }
-  function dampScroll(delta, factor = resistance()) {
-    if (!scrollFrame) scrollTarget = scrollPosition = window.scrollY;
-    const maxScroll = document.documentElement.scrollHeight - window.innerHeight;
-    scrollTarget = Math.max(0, Math.min(maxScroll, scrollTarget + delta * factor));
-    if (!scrollFrame) scrollFrame = window.requestAnimationFrame(easeScroll);
+    transitioning = true;
+    function step(time) {
+      const progress = Math.min(1, (time - started) / 600);
+      const eased = 1 - Math.pow(1 - progress, 3);
+      window.scrollTo({ top: start + (target - start) * eased, behavior: 'instant' });
+      if (progress < 1) transitionFrame = window.requestAnimationFrame(step);
+      else {
+        transitionFrame = 0;
+        transitioning = false;
+        gestureUntil = performance.now() + 180;
+      }
+    }
+    transitionFrame = window.requestAnimationFrame(step);
   }
   window.addEventListener('wheel', event => {
-    if (!canDamp() || event.ctrlKey || event.shiftKey || event.deltaY <= 0 || Math.abs(event.deltaX) > Math.abs(event.deltaY) || !event.cancelable) {
-      stopScroll();
+    if (!event.cancelable || event.ctrlKey || event.shiftKey || Math.abs(event.deltaX) > Math.abs(event.deltaY)) return;
+    if (event.deltaY < 0) { stopTransition(); return; }
+    if (event.deltaY === 0 || !menu.hidden) return;
+    const now = performance.now();
+    // Consume the remaining trackpad momentum instead of skipping past the story.
+    if (transitioning || now < gestureUntil) {
+      event.preventDefault();
+      gestureUntil = now + 180;
       return;
     }
+    if (!inOpening()) return;
     event.preventDefault();
     const unit = event.deltaMode === 1 ? 16 : event.deltaMode === 2 ? window.innerHeight : 1;
-    dampScroll(event.deltaY * unit);
+    const delta = event.deltaY * unit;
+    wheelDistance = now - lastWheelTime > 160 ? delta : wheelDistance + delta;
+    lastWheelTime = now;
+    if (wheelDistance >= 12) enterStory();
   }, { passive: false });
   window.addEventListener('touchstart', event => {
-    stopScroll();
-    touch = canDamp() && event.touches.length === 1 ? {
-      x: event.touches[0].clientX, y: event.touches[0].clientY,
-      time: performance.now(), velocity: 0, active: false
-    } : null;
+    stopTransition();
+    if (inOpening() && event.touches.length === 1) {
+      touch = { x: event.touches[0].clientX, y: event.touches[0].clientY, active: false };
+    }
   }, { passive: true });
   window.addEventListener('touchmove', event => {
-    if (!touch || event.touches.length !== 1 || reduceMotion.matches || !menu.hidden) {
-      touch = null;
-      stopScroll();
-      return;
-    }
+    if (!touch || event.touches.length !== 1 || !menu.hidden) return;
     const finger = event.touches[0];
     const delta = touch.y - finger.clientY;
-    const horizontal = touch.x - finger.clientX;
-    const now = performance.now();
-    if (!touch.active && (delta <= 0 || Math.abs(horizontal) > Math.abs(delta))) {
+    const horizontal = Math.abs(touch.x - finger.clientX);
+    if (!touch.active && horizontal > Math.abs(delta) && horizontal > 12) {
       touch = null;
       return;
     }
-    if (!event.cancelable) return;
+    if (!event.cancelable || (!touch.active && delta <= 0)) return;
     event.preventDefault();
-    touch.active = true;
-    touch.velocity = delta / Math.max(8, now - touch.time);
-    touch.x = finger.clientX;
-    touch.y = finger.clientY;
-    touch.time = now;
-    dampScroll(delta, delta > 0 ? resistance() : 1);
-  }, { passive: false });
-  window.addEventListener('touchend', () => {
-    if (touch?.active && performance.now() - touch.time < 100) {
-      dampScroll(Math.min(140, Math.max(0, touch.velocity) * 90));
+    if (!touch.active && delta >= 32) {
+      touch.active = true;
+      enterStory();
     }
-    touch = null;
-  }, { passive: true });
-  window.addEventListener('touchcancel', () => { touch = null; stopScroll(); }, { passive: true });
-  window.addEventListener('pointerdown', stopScroll, { passive: true });
-  window.addEventListener('keydown', stopScroll);
-  window.addEventListener('resize', stopScroll);
-  reduceMotion.addEventListener('change', () => { touch = null; stopScroll(); });
+  }, { passive: false });
+  window.addEventListener('touchend', () => { touch = null; }, { passive: true });
+  window.addEventListener('touchcancel', stopTransition, { passive: true });
+  window.addEventListener('pointerdown', stopTransition, { passive: true });
+  window.addEventListener('keydown', event => {
+    if (event.ctrlKey || event.metaKey || event.altKey || event.shiftKey) return;
+    if (event.target.closest('a,button,input,textarea,select,[contenteditable="true"]')) return;
+    if (['ArrowDown', 'PageDown', ' '].includes(event.key) && (inOpening() || transitioning)) {
+      event.preventDefault();
+      if (!transitioning && performance.now() >= gestureUntil) enterStory();
+    } else if (['ArrowUp', 'PageUp', 'Home', 'End', 'Escape'].includes(event.key)) stopTransition();
+  });
+  window.addEventListener('resize', stopTransition);
+  reduceMotion.addEventListener('change', stopTransition);
 
   const observer = 'IntersectionObserver' in window ? new IntersectionObserver(entries => {
     entries.forEach(entry => {

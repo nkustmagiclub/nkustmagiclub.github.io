@@ -47,34 +47,37 @@
     if (event.matches) closeMenu();
   });
 
-  // A light, easing resistance in the opening scene; the rest scrolls natively.
+  // Deliberate resistance with a longer ease-out in the opening scene only.
   let scrollFrame = 0;
   let scrollTarget = window.scrollY;
+  let scrollPosition = window.scrollY;
   let lastFrameTime = 0;
   let touch = null;
   const heroBoundary = () => Math.max(1, hero.offsetTop + hero.offsetHeight - document.querySelector('.site-header').offsetHeight);
   const canDamp = () => !reduceMotion.matches && menu.hidden && window.scrollY < heroBoundary();
-  const resistance = () => .52 + .48 * Math.min(1, window.scrollY / heroBoundary());
+  const resistance = () => .32 + .58 * Math.pow(Math.min(1, window.scrollY / heroBoundary()), 2);
   function stopScroll() {
     window.cancelAnimationFrame(scrollFrame);
     scrollFrame = 0;
     lastFrameTime = 0;
     scrollTarget = window.scrollY;
+    scrollPosition = window.scrollY;
   }
   function easeScroll(time) {
     const elapsed = lastFrameTime ? Math.min(time - lastFrameTime, 40) : 16.7;
     lastFrameTime = time;
-    const distance = scrollTarget - window.scrollY;
-    if (Math.abs(distance) < 1.5) {
+    const distance = scrollTarget - scrollPosition;
+    if (Math.abs(distance) < .5) {
       window.scrollTo({ top: scrollTarget, behavior: 'instant' });
       stopScroll();
       return;
     }
-    window.scrollTo({ top: window.scrollY + distance * (1 - Math.exp(-elapsed / 75)), behavior: 'instant' });
+    scrollPosition += distance * (1 - Math.exp(-elapsed / 190));
+    window.scrollTo({ top: scrollPosition, behavior: 'instant' });
     scrollFrame = window.requestAnimationFrame(easeScroll);
   }
   function dampScroll(delta, factor = resistance()) {
-    if (!scrollFrame) scrollTarget = window.scrollY;
+    if (!scrollFrame) scrollTarget = scrollPosition = window.scrollY;
     const maxScroll = document.documentElement.scrollHeight - window.innerHeight;
     scrollTarget = Math.max(0, Math.min(maxScroll, scrollTarget + delta * factor));
     if (!scrollFrame) scrollFrame = window.requestAnimationFrame(easeScroll);

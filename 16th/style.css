@@ -22,3 +22,66 @@ html:not(.js-ready) .menu-toggle{display:none}html:not(.js-ready) .hero-footer>a
 h2{font-size:clamp(1.125rem,3.15vw,1.9125rem)}.story-copy h2{font-size:clamp(1.05rem,2.79vw,1.6875rem)}.section-title-row h2{font-size:clamp(1.0875rem,3.06vw,1.65rem)}.sponsor-layout h2{font-size:clamp(1.05rem,2.88vw,1.65rem)}
 @media(max-width:900px){.story-copy h2{font-size:1.0875rem}}
 @media(max-width:600px){.story-copy h2,.ticket-heading h2{font-size:1.2rem}.performers h2,.sponsor-layout h2{font-size:1.1625rem}.section-title-row h2{font-size:1.0875rem}}
+
+
+/* Fit the opening scene to the viewport; the door uses the remaining grid row. */
+:root{--hero-header-height:5.625rem;--hero-bottom-bar:0px}
+.hero{
+  height:100svh;min-height:0;max-height:none;
+  display:grid;grid-template-rows:auto minmax(0,1fr) auto;
+  row-gap:clamp(.75rem,3.2svh,1.5rem);
+  padding:calc(var(--hero-header-height) + clamp(.5rem,2svh,1rem)) 5.5%
+    calc(var(--hero-bottom-bar) + clamp(.5rem,2svh,1rem));
+}
+.hero::before{inset:calc(var(--hero-header-height) + .4rem) .75rem .6rem}
+.hero-heading{grid-row:1;padding:0;align-self:start;min-width:0}
+.hero-heading .eyebrow{font-size:clamp(.4rem,1.45svh,.625rem);letter-spacing:.16em}
+.hero h1{font-size:clamp(1.75rem,min(8svh,15vw),4.75rem);line-height:1.15;letter-spacing:.12em;margin:.2rem 0 0 .12em}
+.hero-english{font-size:clamp(.875rem,3svh,1.5rem);letter-spacing:.1em;margin-top:.2rem}
+.door-space{grid-row:2;container-type:size;display:grid;place-items:center;min-height:0;min-width:0;width:100%;height:100%}
+.door-stage{
+  container-type:size;
+  height:min(100cqh,calc((100cqw - 3rem) * 452 / 354));
+  width:auto;aspect-ratio:354/452;max-width:none;max-height:none;min-height:0;margin:0;
+}
+.door-frame{border-radius:50% 50% 0 0 / 39% 39% 0 0}
+.door-left{border-radius:100% 0 0 0 / 39% 0 0 0}
+.door-right{border-radius:0 100% 0 0 / 0 39% 0 0}
+.world-sun{width:51%;height:auto;aspect-ratio:1}
+.door-handle{width:1.4%;height:9%;right:4.8%}
+.door-right .door-handle{left:4.8%}
+.door-emblem{font-size:9cqw}
+.door-right .door-emblem{font-size:7.6cqw}
+.open-door{top:73%;width:min(13.125rem,calc(100cqw + 1rem));min-height:2.75rem;padding:.5rem .75rem;gap:.65rem;justify-content:center}
+.open-door>span:last-child{font-size:clamp(.7rem,4.5cqh,.875rem)}
+.open-door small{font-size:clamp(.35rem,2.3cqh,.5rem)}
+.open-icon{font-size:clamp(1rem,7cqh,1.5rem)}
+.door-reveal{padding:0 clamp(.5rem,5cqw,1.125rem) clamp(.625rem,8cqh,2rem)}
+.door-reveal .eyebrow{font-size:clamp(.375rem,2.3cqh,.5rem)}
+.reveal-title{font-size:clamp(1rem,9cqh,1.875rem);line-height:1.4;margin-top:clamp(.25rem,2cqh,.5rem)}
+.reveal-link{font-size:clamp(.65rem,4.4cqh,.8125rem);width:min(11.875rem,100%);min-width:0;min-height:2.5rem;padding:.5rem .75rem;gap:.75rem;margin-top:clamp(.5rem,3cqh,.875rem)}
+.hero-footer{grid-row:3;position:static;width:100%;margin:0;gap:1rem;align-items:end}
+.hero-footer>a{position:static;transform:none;margin-bottom:0;white-space:nowrap}
+@media(max-width:1350px){:root{--hero-header-height:4.75rem}}
+@media(max-width:900px){
+  :root{--hero-header-height:4.375rem;--hero-bottom-bar:calc(3.5rem + env(safe-area-inset-bottom))}
+  .hero{padding-inline:5%;row-gap:clamp(.75rem,3svh,1.25rem)}
+  .hero-footer{display:grid;grid-template-columns:1fr 1fr;gap:.35rem .5rem;flex-wrap:nowrap;font-size:.5rem}
+  .hero-footer p:first-child{grid-column:1;grid-row:2}
+  .hero-footer p:last-child{grid-column:2;grid-row:2}
+  .hero-footer p:first-child strong{font-size:clamp(.95rem,4.5vw,1.3125rem)}
+  .hero-footer p:first-child>span{font-size:.45rem}
+  .hero-footer>a{grid-column:1 / -1;grid-row:1;justify-self:center;font-size:.5rem}
+}
+@media(max-height:640px){
+  :root{--hero-header-height:3rem}
+  .site-header{height:var(--hero-header-height)}
+  .hero{row-gap:.5rem;padding-top:calc(var(--hero-header-height) + .5rem)}
+  .hero-heading .eyebrow{display:none}
+  .hero-english{font-size:1rem}
+  .hero-footer>a{display:none}
+  .hero-footer p:first-child strong{font-size:1rem}
+  .hero-footer{font-size:.5rem}
+  .door-reveal .eyebrow{display:none}
+  .reveal-title{font-size:clamp(.8rem,8cqh,1.1rem);line-height:1.2}
+}

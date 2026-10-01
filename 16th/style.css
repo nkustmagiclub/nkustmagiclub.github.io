@@ -112,7 +112,7 @@ html{scroll-padding-top:calc(var(--hero-header-height) + 16px)}
 }
 
 /* Official programme copy and reserved portrait posters; keep the existing design. */
-.story-copy .story-fiction{font-size:.625rem;color:#7b6853;margin-top:1rem}
+.story-copy .story-fiction{font-size:.625rem;color:#a08f7a;margin-top:1rem}
 .performer-grid{display:grid;grid-template-columns:repeat(4,minmax(0,1fr));gap:1.125rem;margin-top:2.75rem}
 .performer-card,.sponsor-card,.guest-copy,.attendee-panel{min-width:0}
 .poster-slot{position:relative;display:flex;flex-direction:column;align-items:center;justify-content:space-between;aspect-ratio:4/5;width:100%;overflow:hidden;border:1px solid var(--line);padding:1rem;background:radial-gradient(ellipse at 50% 70%,rgba(233,186,117,.08),transparent 65%),#3a2317;color:var(--gold);text-align:center}

@@ -110,3 +110,81 @@ html{scroll-padding-top:calc(var(--hero-header-height) + 16px)}
   .brand-name{font-size:.583333rem}
   .brand-name>span{font-size:.333333rem;margin-top:.1875rem}
 }
+
+/* Official programme copy and reserved portrait posters; keep the existing design. */
+.story-copy .story-fiction{font-size:.625rem;color:#657369;margin-top:1rem}
+.performer-grid{display:grid;grid-template-columns:repeat(4,minmax(0,1fr));gap:1.125rem;margin-top:2.75rem}
+.performer-card,.sponsor-card,.guest-copy,.attendee-panel{min-width:0}
+.poster-slot{position:relative;display:flex;flex-direction:column;align-items:center;justify-content:space-between;aspect-ratio:4/5;width:100%;overflow:hidden;border:1px solid var(--line);padding:1rem;background:radial-gradient(ellipse at 50% 70%,rgba(199,173,124,.08),transparent 65%),#132c29;color:var(--gold);text-align:center}
+.poster-slot::before{content:'';position:absolute;inset:12% 13% 10%;border:1px solid rgba(199,173,124,.2);border-radius:50% 50% 0 0;pointer-events:none}
+.poster-edition{font-family:var(--serif);font-size:.4375rem;letter-spacing:.2em;z-index:1}
+.poster-monogram{position:absolute;top:34%;font-family:var(--serif);font-style:italic;font-size:3.5rem;font-weight:400;opacity:.2}
+.poster-label{position:relative;font-size:.625rem;letter-spacing:.15em;line-height:1.8;margin-top:auto}
+.poster-label small{display:block;font-size:.5rem;letter-spacing:.06em;color:var(--muted)}
+.poster-slot img{position:absolute;inset:0;display:block;width:100%;height:100%;object-fit:contain;background:var(--ink);z-index:2}
+.profile-kicker{font-size:.5rem;letter-spacing:.15em;color:var(--gold);line-height:1.8}
+.performer-copy{padding:1rem 0 0}
+.performer-copy h3{font-size:1.25rem;letter-spacing:.08em;line-height:1.5;margin:.375rem 0 .625rem}
+.performer-copy>p:last-child{font-size:.75rem;line-height:1.9;color:var(--muted)}
+.guest-profile{display:grid;grid-template-columns:minmax(0,.65fr) minmax(0,1.5fr);gap:2.25rem;align-items:center;border-top:1px solid var(--line);padding:2rem 0}
+.guest-profile:last-child{border-bottom:1px solid var(--line)}
+.guest-profile .poster-slot{max-width:14rem;justify-self:start}
+.guest-copy h3{font-size:1.5rem;letter-spacing:.06em;line-height:1.5}
+.guest-copy h3>span{display:inline-block;font-size:.75rem;font-style:italic;letter-spacing:.03em;color:var(--gold);margin-left:.75rem}
+.profile-tagline{font-size:.875rem;color:var(--gold);line-height:1.8;margin-top:.75rem}
+.profile-bio{font-size:.8125rem;line-height:2;color:var(--muted);margin-top:.625rem}
+.profile-credits{font-size:.6875rem;line-height:1.9;color:var(--muted);padding-left:1.1rem;margin:1rem 0 0}
+.profile-credits li+li{margin-top:.25rem}
+.profile-credits li::marker{color:var(--gold)}
+.sponsor-grid{display:grid;grid-template-columns:repeat(3,minmax(0,1fr));gap:1.5rem;margin-top:2.5rem;align-items:start}
+.sponsor-card .poster-slot{margin-bottom:1rem;max-width:12rem}
+.sponsor-card .profile-kicker{color:#7e6842}
+.sponsor-card h3{font-size:1.15rem;line-height:1.5;margin-top:.35rem;overflow-wrap:anywhere}
+.sponsor-person{font-size:.6875rem;line-height:1.8;color:#7e6842;margin-top:.25rem}
+.sponsor-card .profile-bio,.sponsor-card .profile-credits{color:#45574f}
+.profile-more{margin-top:1rem;border-top:1px solid #c9c6b8;padding-top:.75rem}
+.profile-more summary{font-size:.6875rem;line-height:1.8;cursor:pointer;color:#665234;width:fit-content}
+summary:focus-visible{outline:2px solid currentColor;outline-offset:5px}
+.attendee-info{display:grid;grid-template-columns:1.3fr 1fr;gap:10%;margin-top:3rem;padding-top:2rem;border-top:1px solid var(--line)}
+.attendee-panel h3{font-size:1.15rem;line-height:1.6;margin:.4rem 0 1rem}
+.admission-steps{list-style:decimal-leading-zero;margin:0;padding-left:1.5rem;color:var(--gold)}
+.admission-steps li{padding-left:.375rem;font-size:.75rem;line-height:1.9}
+.admission-steps li+li{margin-top:1rem}
+.admission-steps strong{font-weight:500;color:var(--paper)}
+.admission-steps p{color:var(--muted);margin-top:.25rem}
+.info-links{display:flex;flex-wrap:wrap;column-gap:1.25rem}
+.info-links .text-link{font-size:.6875rem;color:var(--gold);margin-top:1rem}
+.contact-note,.event-notice{font-size:.6875rem;line-height:1.9;color:var(--muted);margin-top:1.5rem}
+.contact-note a{color:var(--gold);text-decoration:underline;text-underline-offset:.2em}
+.event-notice{padding-top:1.25rem;border-top:1px solid var(--line)}
+.site-footer>div{flex-wrap:wrap}
+@media(max-width:1100px){
+  .performer-grid{grid-template-columns:repeat(2,minmax(0,1fr));gap:1.75rem}
+  .guest-profile{gap:1.5rem;grid-template-columns:minmax(0,.75fr) minmax(0,1.5fr)}
+  .sponsor-grid{gap:1rem}
+}
+@media(max-width:900px){
+  .performer-grid{margin-top:1.75rem;gap:1.5rem 1rem}
+  .guest-profile{grid-template-columns:1fr;gap:1.25rem}
+  .guest-profile .poster-slot{max-width:13rem;justify-self:center}
+  .sponsor-grid{grid-template-columns:1fr;gap:2rem}
+  .sponsor-card{display:grid;grid-template-columns:minmax(0,.65fr) minmax(0,1fr);column-gap:1.25rem}
+  .sponsor-card .poster-slot{grid-column:1;grid-row:1/7;margin:0;align-self:start}
+  .sponsor-card>*:not(.poster-slot){grid-column:2}
+  .attendee-info{grid-template-columns:1fr;gap:2rem;margin-top:2rem}
+  .guest-copy h3{font-size:1.375rem}
+}
+@media(max-width:540px){
+  .performer-grid{gap:1.5rem .75rem}
+  .performer-copy h3{font-size:1.05rem}
+  .performer-copy>p:last-child{font-size:.6875rem}
+  .poster-slot{padding:.625rem}
+  .poster-edition{font-size:.35rem;letter-spacing:.08em}
+  .poster-monogram{font-size:2.5rem}
+  .poster-label{font-size:.5625rem;letter-spacing:.08em}
+  .guest-copy h3>span{margin-left:.5rem}
+  .sponsor-card{display:block}
+  .sponsor-card .poster-slot{max-width:13rem;margin:0 auto 1.25rem}
+  .profile-bio{font-size:.75rem}
+  .profile-credits{font-size:.625rem}
+}

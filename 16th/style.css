@@ -197,3 +197,55 @@ summary:focus-visible{outline:2px solid currentColor;outline-offset:5px}
 .section-light .text-link:hover{color:#91501f}
 .section-light ::selection{background:#75431f;color:#fff0cf}
 .poster-slot{background:radial-gradient(ellipse at 50% 28%,rgba(213,145,58,.16),transparent 66%),linear-gradient(160deg,#452918,#2e1a11)}
+
+/* Registration information supplied from the official two-section form. */
+.registration{padding:4.25rem 8%;scroll-margin-top:0}
+.registration-heading{padding-top:2.5rem}
+.registration-heading .eyebrow,.registration .profile-kicker{color:#806039}
+.registration-heading h2{margin:.5rem 0 .75rem}
+.registration-heading>p:last-child{font-size:.8125rem;line-height:1.9;color:#66503c}
+.registration-grid{display:grid;grid-template-columns:1.15fr 1fr;gap:1.5rem;margin-top:2rem}
+.registration-card{min-width:0;border:1px solid #d4b991;padding:1.5rem;background:rgba(255,250,237,.5)}
+.registration-card h3,.vehicle-notice h3,.registration-bottom h3{font-size:1.125rem;line-height:1.6;margin:.5rem 0 1rem}
+.registration-fields{margin:0;font-size:.75rem;line-height:1.9}
+.registration-fields>div{display:grid;grid-template-columns:4.25rem minmax(0,1fr);gap:.75rem;padding:.625rem 0;border-bottom:1px solid rgba(128,96,57,.18)}
+.registration-fields dt{font-weight:500;color:var(--ink)}
+.registration-fields dd{margin:0;color:#66503c}
+.registration-example-box{margin-top:1.125rem;padding:1rem;background:#eee0c9;border-left:2px solid #aa7f46}
+.registration-example-box>p:first-child{font-size:.625rem;letter-spacing:.05em;color:#806039}
+.registration-example{font-family:var(--sans);font-size:.6875rem;line-height:1.9;white-space:pre-wrap;overflow-wrap:anywhere;margin:.5rem 0}
+.registration-small{font-size:.625rem;line-height:1.8;color:#756049}
+.registration-child-note{font-size:.6875rem;line-height:1.9;color:#66503c;margin-top:1rem}
+.registration-reminders{list-style:none;margin:0;padding:0}
+.registration-reminders li+li{margin-top:1.125rem;padding-top:1.125rem;border-top:1px solid rgba(128,96,57,.18)}
+.registration-reminders strong{font-size:.8125rem;font-weight:500;line-height:1.8}
+.registration-reminders p{font-size:.75rem;line-height:1.9;color:#66503c;margin-top:.35rem}
+.vehicle-notice{display:grid;grid-template-columns:minmax(0,1fr) minmax(0,1.5fr);gap:2rem;margin-top:1.5rem;padding:1.75rem;background:var(--ink-deep);color:var(--paper);border:1px solid #aa7f46}
+.registration .vehicle-notice .profile-kicker{color:var(--gold)}
+.vehicle-date{font-size:.9375rem;line-height:1.9;color:var(--gold)}
+.vehicle-date span{font-size:.75rem;color:var(--muted)}
+.vehicle-copy p{font-size:.75rem;line-height:1.95;color:var(--muted)}
+.vehicle-copy p+p{margin-top:.75rem}
+.vehicle-copy .text-link{font-size:.6875rem;color:var(--gold);margin-top:1rem}
+.registration-terms{margin-top:2rem;border-top:1px solid #b58d58;border-bottom:1px solid #b58d58}
+.registration-terms>summary{cursor:pointer;padding:1rem .125rem;font-size:1rem;line-height:1.8;color:var(--ink)}
+.registration-terms>summary::marker{color:#806039}
+.terms-count{display:inline-block;font-family:var(--sans);font-size:.625rem;color:#806039;margin-left:1rem}
+.registration-terms-list{margin:0;padding:0 0 1.25rem;list-style:none;counter-reset:registration-rule;display:grid;grid-template-columns:repeat(2,minmax(0,1fr));column-gap:2rem}
+.registration-terms-list li{position:relative;counter-increment:registration-rule;min-width:0;padding:1rem 0 1rem 2rem;border-top:1px solid rgba(128,96,57,.18)}
+.registration-terms-list li::before{content:counter(registration-rule,decimal-leading-zero);position:absolute;left:0;top:1.15rem;font-family:var(--serif);font-size:.875rem;color:#806039}
+.registration-terms-list h3{font-family:var(--sans);font-size:.8125rem;font-weight:500;line-height:1.8;margin-bottom:.375rem}
+.registration-terms-list p{font-size:.75rem;line-height:1.95;color:#66503c}
+.registration-bottom{display:grid;grid-template-columns:minmax(0,1.5fr) minmax(0,1fr);gap:2.5rem;margin-top:2rem;align-items:center}
+.registration-bottom p{font-size:.75rem;line-height:1.95;color:#66503c}
+.registration-bottom p+p{margin-top:.75rem}
+.registration-bottom p a,.registration-links a{color:#78562f;text-decoration:underline;text-underline-offset:.2em}
+.registration-links{display:flex;flex-wrap:wrap;gap:.5rem 1rem;font-size:.6875rem;line-height:1.9;margin:.75rem 0}
+.registration-cta .ticket-button{margin-top:1rem}
+.registration-cta .registration-small{font-size:.625rem;margin-top:.75rem}
+.attendee-panel>.text-link{color:var(--gold);font-size:.6875rem;margin-top:1.25rem}
+@media(min-width:2175px){.registration{padding-inline:max(8%,calc((100vw - 77.5rem)/2))}}
+@media(max-width:1650px){.registration{padding-inline:6%}}
+@media(max-width:1100px){.registration-grid{grid-template-columns:1fr}.registration-card{padding:1.25rem}.vehicle-notice{grid-template-columns:1fr;gap:1rem}.registration-bottom{grid-template-columns:1fr;gap:1.5rem}}
+@media(max-width:900px){.registration{padding:2.5rem 7% 3.125rem}.registration-heading{padding-top:1.75rem}.registration-terms-list{grid-template-columns:1fr}.vehicle-notice{padding:1.25rem}.registration-heading h2{font-size:1.2rem}}
+@media(max-width:540px){.registration-card{padding:1rem}.registration-fields>div{grid-template-columns:1fr;gap:.125rem}.registration-example-box{padding:.75rem}.registration-card h3,.vehicle-notice h3,.registration-bottom h3{font-size:1rem}.registration-terms-list li{padding-left:1.5rem}.terms-count{font-size:.5625rem;margin-left:.5rem}.registration-terms>summary{font-size:.875rem}}

@@ -1,0 +1,176 @@
+{
+  "retrieved_on": "2026-10-01",
+  "description": "Official NKUST Magic Club Abendrot Facebook images. Original JPEG bytes; no cropping or recoloring.",
+  "images": [
+    {
+      "file": "assets/images/cover-announcement.jpg",
+      "date": "2026-08-10",
+      "title": "封面公告",
+      "source": "https://www.facebook.com/photo?fbid=1486033600211429&set=pb.100064144086157.-2207520000",
+      "width": 1230,
+      "height": 540,
+      "bytes": 126628,
+      "sha256": "e341653c90d1db193fd17798b7d440925f076005fc4a5dba571831ff35499623"
+    },
+    {
+      "file": "assets/images/visual-avatar.jpg",
+      "date": "2026-08-10",
+      "title": "視覺頭貼",
+      "source": "https://www.facebook.com/photo?fbid=1486033840211405&set=pb.100064144086157.-2207520000",
+      "width": 1320,
+      "height": 1320,
+      "bytes": 396683,
+      "sha256": "3d10e695b509c7027dc22a3f379792a309956b5071ef7afbfe135f50c2c284d3"
+    },
+    {
+      "file": "assets/images/teaser.jpg",
+      "date": "2026-08-12",
+      "title": "前導預告",
+      "source": "https://www.facebook.com/photo/?fbid=1487823303365792&set=pb.100064144086157.-2207520000",
+      "width": 950,
+      "height": 1188,
+      "bytes": 259786,
+      "sha256": "573ee95fed3372f700a480508b5408a82f59092f4cb7c247c96d3afc24dd091f"
+    },
+    {
+      "file": "assets/images/main-poster.jpg",
+      "date": "2026-08-15",
+      "title": "活動主海報",
+      "source": "https://www.facebook.com/photo/?fbid=1490505739764215&set=pb.100064144086157.-2207520000",
+      "width": 950,
+      "height": 1188,
+      "bytes": 262318,
+      "sha256": "dca62cf04169a968c055201fba2279ac595a5210b181e9d5103d6f7feb8643b2"
+    },
+    {
+      "file": "assets/images/sponsor-magic-god.jpg",
+      "date": "2026-08-17",
+      "title": "魔神魔術公司／陳炳榮",
+      "source": "https://www.facebook.com/photo/?fbid=1492275836253872&set=pb.100064144086157.-2207520000",
+      "width": 950,
+      "height": 1188,
+      "bytes": 230357,
+      "sha256": "75f21d7913978ccf41c17a59673d01c62d14ca2a3e7fe7e54962f109d1876a79"
+    },
+    {
+      "file": "assets/images/sponsor-magic-hat.jpg",
+      "date": "2026-08-19",
+      "title": "搞怪魔術帽／陳徹達",
+      "source": "https://www.facebook.com/photo/?fbid=1494021332745989&set=pb.100064144086157.-2207520000",
+      "width": 950,
+      "height": 1188,
+      "bytes": 228661,
+      "sha256": "450df861d666299f2bc98ad4182426a40e02db7620d9a456acdbc5006235fe0e"
+    },
+    {
+      "file": "assets/images/sponsor-ferret-studio.jpg",
+      "date": "2026-08-21",
+      "title": "Ferret Studio／孟婷",
+      "source": "https://www.facebook.com/photo/?fbid=1495794942568628&set=pb.100064144086157.-2207520000",
+      "width": 950,
+      "height": 1188,
+      "bytes": 232101,
+      "sha256": "b777793ed53adc0cf59d128a58708e16c441a4e27803af39b9fed9baa97d5b14"
+    },
+    {
+      "file": "assets/images/host-huang-da-rong.jpg",
+      "date": "2026-08-24",
+      "title": "主持人／黃大鎔",
+      "source": "https://www.facebook.com/photo/?fbid=1498428265638629&set=pb.100064144086157.-2207520000",
+      "width": 950,
+      "height": 1188,
+      "bytes": 200928,
+      "sha256": "317edb892d28b100015af86b262f2c36ac36fac55ea43f5c111e3c99cf7055f4"
+    },
+    {
+      "file": "assets/images/performer-lu-jing-xun.jpg",
+      "date": "2026-08-26",
+      "title": "表演者／盧敬勳",
+      "source": "https://www.facebook.com/photo/?fbid=1500193035462152&set=pb.100064144086157.-2207520000",
+      "width": 950,
+      "height": 1188,
+      "bytes": 215715,
+      "sha256": "9c305b45e42eb268a1fbb17c875bca916e5e942eab10bfaf9d23e7bab92ee713"
+    },
+    {
+      "file": "assets/images/performer-hsu-li-yun.jpg",
+      "date": "2026-08-28",
+      "title": "表演者／許力勻",
+      "source": "https://www.facebook.com/photo/?fbid=1501976681950454&set=pb.100064144086157.-2207520000",
+      "width": 950,
+      "height": 1188,
+      "bytes": 220644,
+      "sha256": "2b79d449c70cc373e9cbe60e0c6fb8d5cbbf1ab3cebc94f58a82130e963bd46f"
+    },
+    {
+      "file": "assets/images/performer-lei-pei-zhen.jpg",
+      "date": "2026-08-30",
+      "title": "表演者／雷佩臻",
+      "source": "https://www.facebook.com/photo/?fbid=1503735578441231&set=pb.100064144086157.-2207520000",
+      "width": 950,
+      "height": 1188,
+      "bytes": 248219,
+      "sha256": "306331cf80bb758397914ee4c77913aa5866f6f15053cbe27788bea53166a4f1"
+    },
+    {
+      "file": "assets/images/performer-chen-en-yi.jpg",
+      "date": "2026-09-01",
+      "title": "表演者／陳恩裔",
+      "source": "https://www.facebook.com/photo/?fbid=1505422528272536&set=pb.100064144086157.-2207520000",
+      "width": 950,
+      "height": 1188,
+      "bytes": 215870,
+      "sha256": "bb54b4628249199c774f0fafa1c6dd2ea340afc0ce1f3da1f9bee6798b5cf176"
+    },
+    {
+      "file": "assets/images/guest-shrimp.jpg",
+      "date": "2026-09-03",
+      "title": "嘉賓／蝦蝦",
+      "source": "https://www.facebook.com/photo/?fbid=1507137531434369&set=pb.100064144086157.-2207520000",
+      "width": 950,
+      "height": 1188,
+      "bytes": 224825,
+      "sha256": "5ba36464445bda05f86c4fb25bdf4a3485143fbea8fe14bf2988ebffd790a818"
+    },
+    {
+      "file": "assets/images/guest-park-dowon.jpg",
+      "date": "2026-09-05",
+      "title": "嘉賓／朴度源",
+      "source": "https://www.facebook.com/photo/?fbid=1508943804587075&set=pb.100064144086157.-2207520000",
+      "width": 950,
+      "height": 1188,
+      "bytes": 201260,
+      "sha256": "b6afbe1dc113f54b3d0ad19110ed255df2553d7a8acfcfa4d6e12bd776f70efe"
+    },
+    {
+      "file": "assets/images/transport-qr.jpg",
+      "date": "2026-09-07",
+      "title": "交通資訊 QR Code",
+      "source": "https://www.facebook.com/photo/?fbid=1510602101087912&set=pb.100064144086157.-2207520000",
+      "width": 950,
+      "height": 950,
+      "bytes": 232407,
+      "sha256": "86c5095ac3de1c81672224210eccb2518b1aec2aaae5255815e50de13e72a2b5"
+    },
+    {
+      "file": "assets/images/unveiling-group.jpg",
+      "date": "2026-09-07",
+      "title": "揭布儀式現場合照",
+      "source": "https://www.facebook.com/photo.php?fbid=1510602107754578&set=pb.100064144086157.-2207520000&type=3",
+      "width": 2048,
+      "height": 2048,
+      "bytes": 394066,
+      "sha256": "aeeedf498c004e2eca7e4acf462c696f28621cc7b2ad764b1c52ba176457509c"
+    },
+    {
+      "file": "assets/images/profile-promotion.jpg",
+      "date": "2026-09-09",
+      "title": "個人頭貼宣傳圖",
+      "source": "https://www.facebook.com/photo.php?fbid=1512439404237515&set=pb.100064144086157.-2207520000&type=3",
+      "width": 950,
+      "height": 1188,
+      "bytes": 217703,
+      "sha256": "6819a217fda23bcfcc7138fa72a36893edb49fee885f087ab5eb33dab0c6d632"
+    }
+  ]
+}

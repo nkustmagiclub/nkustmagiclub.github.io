@@ -34,7 +34,7 @@ GitHub Pages 從 `main` 根目錄發布，使用 GitHub 內建 Pages 流程。�
 - `SOURCES.md`：內容來源與歷次更新範圍。
 - 主要 CTA 直接開啟正式表單：https://forms.gle/djtMv83iiyGjRZ8K8 。
 - 所有可見報名用語統一為「報名」。
-- 英文文案依本次使用者指定為 Abendlrot；海報內原有 Abendrot 拼字不改製。
+- 活動英文名稱統一為 Abendrot，與正式海報一致。
 - 更新 CSS／JS 後請同步調整 HTML 引用的版本參數，避免舊快取。
 
 ## 搜尋設定

@@ -59,7 +59,7 @@
 - 依使用者最新指示改為公開活動介紹頁；取消先前的 noindex、nofollow，使用 index、follow。
 - 唯一正式活動頁與 canonical：https://nkustmagiclub.tw/16th/ 。補齊 title、description、Open Graph，並加入根目錄 sitemap.xml。
 - 首頁近期活動原有「活動介紹」及「報名」兩個連結均保留，未改寫 EDIT_CONTENT.md、首頁或全站導覽。
-- 文案中的英文拼字依本次使用者明確指定使用 **Abendlrot**。原始官方海報中的 **Abendrot** 保持原圖，未修改。
+- 活動英文名稱為 **Abendrot**，與正式海報一致。第二版曾誤加字母 l，已於 2026-10-03 更正頁面文案、搜尋與社群 metadata、結構化資料。原始海報未修改。
 - 日期、18:30 入場、19:00 開演、19:30 最後入場、地點及免費入場依本次使用者提供的第二版規格；18:00 簽到仍依報名表。
 - 主海報移至 Hero。兩位嘉賓、主持人及四位社內表演者使用既有正式海報；保留全部 17 張原始素材。
 - 三個贊助商沿用已確認名稱：Moshen Magic、Hate My Hat Magic、Ferret Studio；基本介紹直接顯示。

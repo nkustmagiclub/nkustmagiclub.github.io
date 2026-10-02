@@ -34,7 +34,7 @@
 - [09/17（四）、09/18（五）《街魔行動延長》打卡送飲料](street-magic.html) <!-- until:2026-09-18 -->
 - [09/22（二）《社團嘉年華》看魔術、打卡送飲料](club-fair.html) <!-- until:2026-09-22 -->
 - [09/23（三）《魔術社期初茶會》報名](https://docs.google.com/forms/d/e/1FAIpQLSepGFE_8Y1ZGdZFlZdbK7QMRRTJrIsktk_X42YmV_9exn7iQg/viewform?usp=send_form) <!-- until:2026-09-23 -->
-- [10/17（六）國際魔術晚會《阿本洛特》活動介紹](16th/) <!-- until:2026-10-17 -->
+- [《阿本洛特》活動介紹頁面](16th/) <!-- until:2026-10-17 -->
 - [10/17（六）國際魔術晚會《阿本洛特》報名](https://forms.gle/djtMv83iiyGjRZ8K8) <!-- until:2026-10-17 -->
 - [09/09（三）－09/16（三）《魔術社街魔行動》現場紀錄](street-magic.html#event-records) <!-- until:2026-09-16 -->
 

@@ -53,3 +53,17 @@
 - 其他 6 張一併存入專案備用，未新增官網首頁、導覽、活動列表或 sitemap 入口。
 - 補充取得 9/7 揭布儀式現場合照：https://www.facebook.com/photo.php?fbid=1510602107754578&set=pb.100064144086157.-2207520000&type=3
 - 補充取得 9/7 交通資訊圖：https://www.facebook.com/photo/?fbid=1510602101087912&set=pb.100064144086157.-2207520000
+
+## 第二版公開活動頁（2026-10-02）
+
+- 依使用者最新指示改為公開活動介紹頁；取消先前的 noindex、nofollow，使用 index、follow。
+- 唯一正式活動頁與 canonical：https://nkustmagiclub.tw/16th/ 。補齊 title、description、Open Graph，並加入根目錄 sitemap.xml。
+- 首頁近期活動原有「活動介紹」及「報名」兩個連結均保留，未改寫 EDIT_CONTENT.md、首頁或全站導覽。
+- 文案中的英文拼字依本次使用者明確指定使用 **Abendlrot**。原始官方海報中的 **Abendrot** 保持原圖，未修改。
+- 日期、18:30 入場、19:00 開演、19:30 最後入場、地點及免費入場依本次使用者提供的第二版規格；18:00 簽到仍依報名表。
+- 主海報移至 Hero。兩位嘉賓、主持人及四位社內表演者使用既有正式海報；保留全部 17 張原始素材。
+- 三個贊助商沿用已確認名稱：Moshen Magic、Hate My Hat Magic、Ferret Studio；基本介紹直接顯示。
+- 第二版顯示精簡的報名提醒；完整規定以正式 Google 表單為準，原頁長篇內容、經歷和來源記錄仍完整保存在封存分支。
+- 更新前完整版本保存在 `archive/16th-full-page`，commit `522fc0871ab462cc126574f0508835b53940add0`。封存分支不是 Pages 的發布來源，沒有在 main 新增另一份舊版 HTML。
+- 部署來源已由 GitHub Pages build log 確認為 main 根目錄（checkout ref: main；upload-pages-artifact path: .）。未改變部署設定。
+

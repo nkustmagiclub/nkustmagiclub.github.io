@@ -1,7 +1,7 @@
 /* Shared review changes: concise labels and fewer frames in both previews. */
 .brand { display: block; flex-shrink: 1; min-width: 0; line-height: 1.4; letter-spacing: .04em; }
-.brand-title { display: block; font-size: .82rem; font-weight: 600; }
-.brand-subtitle { display: block; font-size: .62rem; margin-top: 2px; white-space: nowrap; }
+.brand-title { display: block; font-size: .64rem; font-weight: 400; }
+.brand-subtitle { display: block; font-size: .94rem; font-weight: 600; margin-top: 2px; white-space: nowrap; }
 .brand-subtitle > span { margin-left: .5em; }
 .header-inner { min-height: 64px; }
 .header-inner > .button { flex-shrink: 0; }
@@ -20,14 +20,14 @@
 .sponsor-copy { padding-inline: 0; }
 @media(max-width:760px) {
   .header-inner { height: 64px; gap: 10px; }
-  .brand-title { font-size: .8rem; }
-  .brand-subtitle { font-size: .61rem; }
+  .brand-title { font-size: .62rem; }
+  .brand-subtitle { font-size: .88rem; }
   .hero-copy { max-width: 520px; }
   .section-heading h2 { font-size: 1.4rem; }
   .section-number { margin-right: .15em; }
 }
 @media(max-width:370px) {
-  .brand-title { font-size: .74rem; }
-  .brand-subtitle { font-size: .55rem; }
+  .brand-title { font-size: .6rem; }
+  .brand-subtitle { font-size: .8rem; }
   .header-inner > .button { padding-inline: 10px; gap: 8px; }
 }

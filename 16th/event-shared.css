@@ -219,7 +219,7 @@ h1 > span { color: #9a5935; }
   gap: .3rem;
 }
 .hero-refined .hero-date > span {
-  font-size: .68em;
+  font-size: inherit;
   font-weight: inherit;
 }
 .hero-refined .hero-time,
@@ -310,3 +310,10 @@ h1 > span { color: #9a5935; }
   --door-seam-glow: #efbc5666;
   --door-button-shadow: #542b2433;
 }
+
+/* Keep the whole date line visually equal, including weekday and free admission. */
+.hero-refined .hero-date {
+  font-size: clamp(1rem, 5.5vw, 1.4rem);
+  flex-wrap: nowrap;
+}
+.hero-refined .hero-date .free-label { margin-left: .2em; }

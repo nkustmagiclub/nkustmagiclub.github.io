@@ -1,0 +1,33 @@
+/* Shared review changes: concise labels and fewer frames in both previews. */
+.brand { display: block; flex-shrink: 1; min-width: 0; line-height: 1.4; letter-spacing: .04em; }
+.brand-title { display: block; font-size: .82rem; font-weight: 600; }
+.brand-subtitle { display: block; font-size: .62rem; margin-top: 2px; white-space: nowrap; }
+.brand-subtitle > span { margin-left: .5em; }
+.header-inner { min-height: 64px; }
+.header-inner > .button { flex-shrink: 0; }
+.section-number { font-family: var(--sans); font-size: .65em; letter-spacing: .06em; margin-right: .35em; white-space: nowrap; opacity: .8; }
+.section-heading > div { min-width: 0; }
+.hero::after { display: none; }
+.hero-copy { padding: 0; background: transparent; border: 0; box-shadow: none; border-radius: 0; }
+.event-wordmark { padding: 0; background: transparent; border: 0; border-radius: 0; }
+.door-glow, .door-world { display: none; }
+.door-frame { box-shadow: 0 12px 26px rgba(47,17,34,.15); }
+.door-reveal { background: transparent; }
+.door-stage.is-entered .door-frame { box-shadow: none; background: transparent; }
+.reveal-poster img { filter: none; }
+.guest-card > .poster-link, .sponsor-card .poster-link { padding: 0; border: 0; background: transparent; }
+.arrival-card { padding: 0; border: 0; border-radius: 0; background: transparent; }
+.sponsor-copy { padding-inline: 0; }
+@media(max-width:760px) {
+  .header-inner { height: 64px; gap: 10px; }
+  .brand-title { font-size: .8rem; }
+  .brand-subtitle { font-size: .61rem; }
+  .hero-copy { max-width: 520px; }
+  .section-heading h2 { font-size: 1.4rem; }
+  .section-number { margin-right: .15em; }
+}
+@media(max-width:370px) {
+  .brand-title { font-size: .74rem; }
+  .brand-subtitle { font-size: .55rem; }
+  .header-inner > .button { padding-inline: 10px; gap: 8px; }
+}

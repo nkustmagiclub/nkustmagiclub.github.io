@@ -182,3 +182,9 @@ h1 > span { color: #9a5935; }
   .hero-date { font-size: 1.18rem; }
   .hero .free-label { font-size: .68rem; }
 }
+
+
+/* Official transparent wordmark, replacing the typeset event title. */
+.event-wordmark { background: var(--purple); padding: 20px 12px; border-radius: 2px; line-height: 0; }
+.event-wordmark picture, .event-wordmark img { display: block; width: 100%; }
+.event-wordmark img { height: auto; }

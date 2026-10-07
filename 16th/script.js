@@ -1,3 +1,27 @@
+/* Retry the original image if a supported WebP source fails to load or decode. */
+(() => {
+  'use strict';
+  document.querySelectorAll('picture > img').forEach((img) => {
+    const picture = img.parentElement;
+    const fallbackSrc = img.getAttribute('src');
+    if (!fallbackSrc || !picture.querySelector('source[type="image/webp"]')) return;
+
+    let retried = false;
+    const restoreOriginal = () => {
+      if (retried) return;
+      retried = true;
+      // A <picture> source keeps winning over img.src until its srcset is removed.
+      picture.querySelectorAll('source').forEach((source) => source.removeAttribute('srcset'));
+      img.removeAttribute('srcset');
+      img.removeAttribute('sizes');
+      img.src = fallbackSrc;
+    };
+    img.addEventListener('error', restoreOriginal, { once: true });
+    // Eager images can fail before this deferred script runs.
+    if (img.complete && img.naturalWidth === 0) restoreOriginal();
+  });
+})();
+
 /* Door interaction from the full edition; event details stay immediately available. */
 (() => {
   'use strict';

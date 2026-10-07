@@ -96,17 +96,17 @@
   .header-inner > .button { padding-inline: 10px; gap: 8px; }
 }
 
-/* Solid backdrop for posters and their copy. */
+/* Solid dusk-purple backdrop joins the poster sections to the opening palette. */
 .lineup, .sponsors {
-  background: #fff4dc;
-  color: #4a1b37;
-  color-scheme: light;
+  background: #5d2345;
+  color: #fff5e1;
+  color-scheme: dark;
 }
 .lineup h2, .lineup h3, .lineup h4,
-.sponsors h2, .sponsor-copy h3, .sponsor-history h4 { color: #4a1b37; }
-.lineup .role, .guest-copy h3 span, .club-heading p,
-.sponsor-english, .sponsor-person { color: #71365b; }
-.guest-copy > p:last-child, .sponsor-bio, .sponsor-credits { color: #54243f; }
-.sponsors, .club-lineup, .sponsor-history { border-top-color: #dec5a2; }
+.sponsors h2, .sponsor-copy h3, .sponsor-history h4 { color: #fff5e1; }
+.guest-copy h3 span, .club-heading p, .sponsor-english { color: #efd0e1; }
+.lineup .role, .sponsor-person { color: #f6be45; }
+.guest-copy > p:last-child, .sponsor-bio, .sponsor-credits { color: #f7e4ee; }
+.sponsors, .club-lineup, .sponsor-history { border-top-color: rgba(246,190,69,.3); }
 .lineup .poster-link:focus-visible,
-.sponsor-card .poster-link:focus-visible { outline-color: #4a1b37; }
+.sponsor-card .poster-link:focus-visible { outline-color: #fff5e1; }

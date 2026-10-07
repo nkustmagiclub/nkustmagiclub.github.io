@@ -28,7 +28,7 @@ GitHub Pages 從 `main` 根目錄發布，使用 GitHub 內建 Pages 流程。�
 ## 維護
 
 - `index.html`：活動內容、搜尋與社群 metadata、Event structured data。
-- `style.css`：直向晚霞配色、暖米白海報區域、字級、64px 導覽列及響應式排版。
+- `style.css`：直向晚霞配色、深紫單色海報區域、字級、64px 導覽列及響應式排版。
 - `script.js`：圖片載入失敗備援、原版開門互動與舊的 `#tickets` 錨點相容處理。門後按鈕直接開正式表單；鍵盤操作支援焦點移轉，減少動態效果偏好會關閉過場。
 - `SOURCES.md`：內容來源與歷次更新範圍。
 - 主要 CTA 直接開啟正式表單：https://forms.gle/djtMv83iiyGjRZ8K8 。
@@ -55,4 +55,4 @@ GitHub Pages 從 `main` 根目錄發布，使用 GitHub 內建 Pages 流程。�
 
 ## 2026-10-08 正式版更新
 
-採用已確認的預覽二設計，發布至 `/16th/`。海報區域使用暖米白單色底與深紫文字，其他區塊保留直向漸層。預覽共用樣式已整併至 `style.css`，兩個 `design-preview` 預覽目錄及 `preview-shared.css` 已移除。歷史版本可由 Git 提交記錄復原；根目錄入口網站不受影響。
+採用已確認的預覽二設計，發布至 `/16th/`。海報區域使用深紫單色底（#5D2345）與暖白文字，其他區塊保留直向漸層。預覽共用樣式已整併至 `style.css`，兩個 `design-preview` 預覽目錄及 `preview-shared.css` 已移除。歷史版本可由 Git 提交記錄復原；根目錄入口網站不受影響。

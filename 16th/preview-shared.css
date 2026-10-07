@@ -31,3 +31,18 @@
   .brand-subtitle { font-size: .8rem; }
   .header-inner > .button { padding-inline: 10px; gap: 8px; }
 }
+
+/* Both previews share a quiet, solid backdrop for posters and their copy. */
+.lineup, .sponsors {
+  background: #fff4dc;
+  color: #4a1b37;
+  color-scheme: light;
+}
+.lineup h2, .lineup h3, .lineup h4,
+.sponsors h2, .sponsor-copy h3, .sponsor-history h4 { color: #4a1b37; }
+.lineup .role, .guest-copy h3 span, .club-heading p,
+.sponsor-english, .sponsor-person { color: #71365b; }
+.guest-copy > p:last-child, .sponsor-bio, .sponsor-credits { color: #54243f; }
+.sponsors, .club-lineup, .sponsor-history { border-top-color: #dec5a2; }
+.lineup .poster-link:focus-visible,
+.sponsor-card .poster-link:focus-visible { outline-color: #4a1b37; }

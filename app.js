@@ -332,7 +332,7 @@
       source.srcset = [480, 760, 950]
         .map((width) => `${normalizeImageSource("16th/assets/images/" + poster[1] + "-" + width + ".webp")} ${width}w`)
         .join(", ");
-      source.sizes = "(min-width: 768px) 352px, (min-width: 544px) 512px, calc(100vw - 32px)";
+      source.sizes = "(min-width: 768px) 272px, (min-width: 288px) 256px, calc(100vw - 32px)";
       node.width = 950;
       node.height = 1188;
       node.addEventListener("error", () => {
@@ -835,3 +835,4 @@
 
   start();
 })();
+

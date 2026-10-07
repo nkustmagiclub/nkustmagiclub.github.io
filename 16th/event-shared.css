@@ -220,7 +220,7 @@ h1 > span { color: #9a5935; }
 }
 .hero-refined .hero-date > span {
   font-size: .68em;
-  font-weight: 400;
+  font-weight: inherit;
 }
 .hero-refined .hero-time,
 .hero-refined .hero-place {

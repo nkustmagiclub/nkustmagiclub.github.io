@@ -55,8 +55,7 @@
 @media(max-width:760px){.door-space{padding:12px 0 24px}.door-stage{width:min(320px,calc(100% - 32px))}.door-reveal{padding:20px 18px;gap:12px}.door-reveal .reveal-link{font-size:1rem}.door-emblem{font-size:1.8rem}.door-right .door-emblem{font-size:1.5rem}.panel-top{left:10px;right:10px}.panel-bottom{left:10px;right:10px}}
 @media(prefers-reduced-motion:reduce){.door-stage *{transition:none!important;animation:none!important}.door-stage.is-open .door-panel{visibility:hidden}.door-stage.is-open .door-reveal{opacity:1;transform:none}}
 
-/* Review draft: the supplied courtyard artwork is the scene itself.
-   Its pixels are not recolored; the text surfaces keep the original image visible. */
+/* Review draft: reference colors only. No reference artwork is used as a background. */
 :root {
   --ink: #513025;
   --ink-deep: #382017;
@@ -75,7 +74,7 @@ body { background: #fff4dc; color: var(--ink); }
 .button { background: #9d392c; border-color: #9d392c; color: #fff4dc; }
 .button:hover { background: #7f2d28; border-color: #7f2d28; }
 .hero {
-  background: #c9814a url('./sunset-courtyard.webp') center 38% / cover no-repeat;
+  background: linear-gradient(180deg,var(--purple) 0%,#d97698 28%,#efa270 45%,var(--sunlight) 62%,var(--orange-red) 77%,#bc8040 100%);
   color: var(--ink);
 }
 .hero::after { display: none; }
@@ -113,17 +112,13 @@ h1 > span { color: #9a5935; }
   border-color: #e7bd77;
 }
 .door-right { background: linear-gradient(268deg,#8d572b,#bd8748 32%,#b17837 78%,#825022); }
-.door-panel::after {
-  content: ''; position: absolute; inset: 0; pointer-events: none;
-  background: url('./sunset-courtyard.webp') center / 500% auto;
-  opacity: .1; mix-blend-mode: multiply;
-}
+.door-panel::after { content: none; }
 .panel-top, .panel-bottom { border-color: #e0b16b; box-shadow: inset 0 0 0 6px #aa743d,inset 0 0 0 7px #d5a96466; }
 .door-handle { background: linear-gradient(90deg,#97713b,#f2d097,#97713b); box-shadow: 2px 2px 6px #754822; }
 .door-seam { background: #f5ddb0; box-shadow: 0 0 13px 2px #efbc5666; }
 .open-door { background: #f8e9c5; border-color: #cb9a50; color: #513025; box-shadow: 0 5px 20px #542b2433; min-height: 52px; font-weight: 600; }
 .open-door:hover { background: #fff4dc; }
-.door-world { background: #c58348 url('./sunset-courtyard.webp') center / cover; }
+.door-world { background: linear-gradient(180deg,#bd6b92,#e9a363 50%,#ac773d); }
 .door-reveal { background: linear-gradient(#5c321526,#5c321577); }
 .hall-arch { border-color: #f4d29388; box-shadow: inset 0 0 0 7px #81512833,0 0 0 7px #f2ca7222; }
 .hall-column { background: linear-gradient(90deg,#996732,#dab26b,#996732); border-top-color: #efcc8a; border-bottom-color: #c59755; }
@@ -168,7 +163,7 @@ h1 > span { color: #9a5935; }
   .hero-actions { flex-wrap: wrap; }
 }
 @media(max-width:760px) {
-  .hero { background: #c9814a url('./sunset-courtyard.webp') center / cover no-repeat; }
+  .hero { background: linear-gradient(180deg,var(--purple) 0%,#d97698 28%,#efa270 45%,var(--sunlight) 62%,var(--orange-red) 77%,#bc8040 100%); }
   .hero-inner { min-height: 0; grid-template-columns: 1fr; gap: 36px; padding-block: 30px 52px; }
   .hero-copy { padding: 24px 22px; max-width: 440px; width: 100%; margin-inline: auto; background: rgba(255,244,220,.94); }
   .hero .eyebrow { font-size: .73rem; }

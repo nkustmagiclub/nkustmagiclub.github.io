@@ -4,7 +4,7 @@
   const PAGE_KIND = document.body.dataset.page || "home";
   const CONTENT_FILE = document.body.dataset.contentFile || "EDIT_CONTENT.md";
   const PAGE_KICKER = document.body.dataset.kicker || "02 / ABOUT";
-  const PAGE_VERSION = "20260918-activities";
+  const PAGE_VERSION = document.body.dataset.contentVersion || "20260918-activities";
   const IMAGE_LAYOUT = document.body.dataset.imageLayout || "stack";
   const app = document.getElementById("app");
   const copyrightYear = document.getElementById("copyright-year");
@@ -317,7 +317,33 @@
     node.loading = "lazy";
     node.decoding = "async";
     node.src = src;
-    figure.appendChild(node);
+
+    // Team biographies reuse the event's complete, responsive poster assets.
+    const posterUrl = new URL(src);
+    const poster = posterUrl.pathname.match(/^\/16th\/assets\/images\/(sponsor-(?:moshen-magic|ferret-studio|hate-my-hat-magic)|performer-(?:lu-jing-xun|hsu-li-yun))\.jpg$/);
+    if (
+      document.body.classList.contains("team-page") &&
+      posterUrl.origin === window.location.origin &&
+      poster
+    ) {
+      const picture = element("picture", "team-poster");
+      const source = element("source");
+      source.type = "image/webp";
+      source.srcset = [480, 760, 950]
+        .map((width) => `${normalizeImageSource("16th/assets/images/" + poster[1] + "-" + width + ".webp")} ${width}w`)
+        .join(", ");
+      source.sizes = "(min-width: 768px) 352px, (min-width: 544px) 512px, calc(100vw - 32px)";
+      node.width = 950;
+      node.height = 1188;
+      node.addEventListener("error", () => {
+        source.remove();
+        node.src = src;
+      }, { once: true });
+      picture.append(source, node);
+      figure.appendChild(picture);
+    } else {
+      figure.appendChild(node);
+    }
     return figure;
   }
 

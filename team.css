@@ -61,3 +61,11 @@
     margin-top: 0 !important;
   }
 }
+
+/* Keep the entire poster visible at its original aspect ratio. */
+.team-page .team-poster { display: block; width: 100%; }
+.team-page .team-poster .detail-image {
+  aspect-ratio: 950 / 1188;
+  object-fit: contain;
+  height: auto;
+}

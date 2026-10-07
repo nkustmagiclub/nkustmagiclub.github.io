@@ -46,3 +46,6 @@
 .sponsors, .club-lineup, .sponsor-history { border-top-color: #dec5a2; }
 .lineup .poster-link:focus-visible,
 .sponsor-card .poster-link:focus-visible { outline-color: #4a1b37; }
+
+/* Free admission is informational text, not a button. */
+.hero-date .free-label { border: 0; border-radius: 0; padding: 0; font-weight: 400; }

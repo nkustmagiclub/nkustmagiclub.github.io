@@ -1,4 +1,4 @@
-# 第 16 屆國際晚會：第二版公開活動頁
+# 第 16 屆國際晚會：正式活動頁
 
 正式網址：https://nkustmagiclub.tw/16th/
 
@@ -23,13 +23,13 @@ GitHub Pages 從 `main` 根目錄發布，使用 GitHub 內建 Pages 流程。�
 5. 三張贊助海報、名稱、人物介紹及經歷直接顯示。
 6. 頁尾報名 CTA。
 
-沿用既有靜態 HTML、CSS、JavaScript 及本機圖片，不需要建置工具。原始 17 張 JPEG 全數保留於 `assets/images/`，來源與 SHA-256 見 `assets/images/manifest.json`。目前素材沒有 WebP；未重複轉檔或修改原海報。
+沿用既有靜態 HTML、CSS、JavaScript 及本機圖片，不需要建置工具。原始 17 張 JPEG 全數保留於 `assets/images/`，來源與 SHA-256 見 `assets/images/manifest.json`。頁面使用 480／760／950px 響應式 WebP；原始 JPEG 保留，點擊海報可開啟原圖。WebP 載入或解碼失敗時，會自動改用原始圖片。
 
 ## 維護
 
 - `index.html`：活動內容、搜尋與社群 metadata、Event structured data。
-- `style.css`：晚霞配色、字級、64px／56px 導覽列及響應式排版。
-- `script.js`：原版開門互動與舊的 `#tickets` 錨點相容處理。門後按鈕直接開正式表單；鍵盤操作支援焦點移轉，減少動態效果偏好會關閉過場。
+- `style.css`：直向晚霞配色、暖米白海報區域、字級、64px 導覽列及響應式排版。
+- `script.js`：圖片載入失敗備援、原版開門互動與舊的 `#tickets` 錨點相容處理。門後按鈕直接開正式表單；鍵盤操作支援焦點移轉，減少動態效果偏好會關閉過場。
 - `SOURCES.md`：內容來源與歷次更新範圍。
 - 主要 CTA 直接開啟正式表單：https://forms.gle/djtMv83iiyGjRZ8K8 。
 - 所有可見報名用語統一為「報名」。
@@ -52,3 +52,7 @@ GitHub Pages 從 `main` 根目錄發布，使用 GitHub 內建 Pages 流程。�
 
 依使用者指示移除最後入場時間與改寫的長篇故事。只保留使用者提供的表單短句，完整舊版仍在封存分支。開門動畫恢復於 Hero，門板退場後顯示殿內主海報與報名按鈕；三張贊助海報與完整可見介紹保留。
 
+
+## 2026-10-08 正式版更新
+
+採用已確認的預覽二設計，發布至 `/16th/`。海報區域使用暖米白單色底與深紫文字，其他區塊保留直向漸層。預覽共用樣式已整併至 `style.css`，兩個 `design-preview` 預覽目錄及 `preview-shared.css` 已移除。歷史版本可由 Git 提交記錄復原；根目錄入口網站不受影響。

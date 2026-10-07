@@ -196,3 +196,9 @@ h1 > span { color: #9a5935; }
 .hero-lineup, .hero-lineup strong, .hero-time > span { color: #321a22; }
 .hero .free-label { color: #57252b; }
 .event-wordmark { filter: drop-shadow(0 2px 6px rgba(83,32,60,.2)); }
+
+/* Poster sections: a soft vertical sunset sampled from the event palette. */
+.lineup, .sponsors {
+  background: linear-gradient(180deg,#ebc0d8 0%,#f6c6b3 48%,#f9dfaa 100%);
+}
+.sponsors { border-top-color: #d6a988; }

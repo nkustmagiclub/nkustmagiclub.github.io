@@ -61,3 +61,16 @@
   background: linear-gradient(180deg,rgba(47,17,34,.76) 0%,rgba(47,17,34,.58) 38%,rgba(47,17,34,.12) 72%,transparent 100%),
               linear-gradient(180deg,var(--purple) 0%,var(--purple) 30%,var(--orange-red) 76%,var(--sunlight) 100%);
 }
+
+/* Poster sections: the same sunset under a dusk layer for readable light text. */
+.lineup, .sponsors {
+  background: linear-gradient(180deg,rgba(47,17,34,.56),rgba(47,17,34,.56)),
+              linear-gradient(180deg,var(--purple) 0%,var(--orange-red) 54%,var(--sunlight) 100%);
+  color: var(--paper);
+  color-scheme: dark;
+}
+.sponsors { border-top-color: rgba(246,190,69,.24); }
+.sponsors h2, .sponsor-copy h3, .sponsor-person, .sponsor-history h4 { color: var(--paper); }
+.sponsor-english, .sponsor-bio, .sponsor-credits { color: #f7e4ee; }
+.sponsor-history { border-top-color: rgba(255,245,225,.35); }
+.sponsor-card .poster-link:focus-visible { outline-color: var(--paper); }

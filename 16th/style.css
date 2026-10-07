@@ -113,3 +113,56 @@
 
 /* Free admission is informational text, not a button. */
 .hero-date .free-label { border: 0; border-radius: 0; padding: 0; font-size: .68em; font-weight: 400; }
+
+/* A quieter first screen: wordmark, event details, then one registration action. */
+.hero-refined .header-registration {
+  visibility: hidden;
+  opacity: 0;
+  pointer-events: none;
+}
+.hero-refined .header-registration.is-visible {
+  visibility: visible;
+  opacity: 1;
+  pointer-events: auto;
+}
+.hero-refined .hero-essential {
+  display: grid;
+  gap: .5rem;
+  margin-top: 1.75rem;
+}
+.hero-refined .hero-date {
+  font-size: 1.4rem;
+  font-weight: 600;
+  gap: .3rem;
+}
+.hero-refined .hero-date > span {
+  font-size: .68em;
+  font-weight: 400;
+}
+.hero-refined .hero-time,
+.hero-refined .hero-place {
+  margin-top: 0;
+  font-size: 1rem;
+  font-weight: 400;
+  line-height: 1.7;
+}
+.hero-refined .hero-actions {
+  margin-top: 1.5rem;
+}
+.hero-refined .hero-actions > .button {
+  min-width: 12rem;
+}
+@media (max-width: 760px) {
+  .hero-refined .hero-inner {
+    padding-block: 40px 52px;
+    row-gap: 64px;
+  }
+  .hero-refined .hero-date { font-size: 1.3rem; }
+  .hero-refined .hero-actions > .button {
+    width: 100%;
+    min-width: 0;
+  }
+}
+@media (max-width: 370px) {
+  .hero-refined .hero-date { font-size: 1.18rem; }
+}

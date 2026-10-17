@@ -37,6 +37,70 @@ a {
   background: var(--club-primary-strong);
 }
 
+/* Language links are ordinary page links; the root URL remains the Chinese portal. */
+.language-switch {
+  display: flex;
+  align-items: center;
+  justify-content: flex-end;
+  gap: .65rem;
+  min-height: 2.75rem;
+  padding: .5rem max(.75rem, env(safe-area-inset-right));
+  color: var(--surface);
+  background: var(--club-primary-strong);
+  font-size: .875rem;
+  line-height: 1.4;
+}
+
+.language-switch a {
+  display: inline-flex;
+  align-items: center;
+  min-height: 2rem;
+  padding-inline: .25rem;
+  text-underline-offset: .25em;
+}
+
+.language-switch a:focus-visible {
+  outline: 2px solid var(--about-highlight);
+  outline-offset: 3px;
+}
+
+.language-switch [aria-current="page"] { font-weight: 800; }
+body[data-language-page] .future-header-space { min-height: 1rem; }
+
+/* English headings wrap by word instead of inheriting the Chinese single line. */
+html[lang="en"] .display-title {
+  max-width: 18ch;
+  margin-inline: auto;
+  font-size: clamp(2.25rem, 9vw, 5.5rem);
+  line-height: 1.08;
+  white-space: normal;
+}
+
+html[lang="en"] .hero-subtitle {
+  max-width: 50rem;
+  margin-inline: auto;
+  font-size: clamp(.9rem, 2.5vw, 1.2rem);
+  letter-spacing: .04em;
+}
+
+html[lang="en"] .about-title {
+  font-size: clamp(2.35rem, 7.5vw, 5.5rem);
+  line-height: 1.1;
+  letter-spacing: -.025em;
+  overflow-wrap: break-word;
+}
+
+html[lang="en"] .section-title {
+  min-width: 0;
+  font-size: clamp(1.5rem, 4.5vw, 2.8rem);
+  line-height: 1.25;
+  letter-spacing: 0;
+  overflow-wrap: break-word;
+}
+
+html[lang="en"] .section-number { flex: 0 0 auto; }
+html[lang="en"] .footer-copyright { flex: 1 1 8rem; white-space: normal; }
+
 .skip-link {
   position: fixed;
   z-index: 999;

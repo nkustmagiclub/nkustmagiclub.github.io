@@ -1,6 +1,10 @@
 (function () {
   "use strict";
 
+  const IS_ENGLISH = document.documentElement.lang.toLowerCase().startsWith("en");
+  const SITE_ROOT = new URL(IS_ENGLISH ? "../" : "./", window.location.href);
+  const text = (chinese, english) => IS_ENGLISH ? english : chinese;
+  const ACTIVITIES_HEADING = text("近期活動", "Upcoming Events");
   const PAGE_KIND = document.body.dataset.page || "home";
   const CONTENT_FILE = document.body.dataset.contentFile || "EDIT_CONTENT.md";
   const PAGE_KICKER = document.body.dataset.kicker || "02 / ABOUT";
@@ -85,7 +89,7 @@
   }
 
   function prepareActivities(page, today) {
-    const activities = page.sections.find((section) => section.title === "近期活動");
+    const activities = page.sections.find((section) => section.title === ACTIVITIES_HEADING);
     if (!activities) return page;
 
     const ended = (link) => Boolean(link.until && link.until < today);
@@ -94,7 +98,7 @@
     const recentSection = {
       ...activities,
       links: upcoming,
-      paragraphs: upcoming.length ? activities.paragraphs : ["新的活動準備中，先看看我們的過往紀錄。"],
+      paragraphs: upcoming.length ? activities.paragraphs : [text("新的活動準備中，先看看我們的過往紀錄。", "New events are being planned. Explore our past events in Chinese.")],
     };
 
     if (PAGE_KIND === "activities") {
@@ -313,7 +317,7 @@
 
     const figure = element("figure", "detail-image-figure mt-3");
     const node = element("img", "detail-image");
-    node.alt = image.alt || "活動圖片";
+    node.alt = image.alt || text("活動圖片", "Club photo");
     node.loading = "lazy";
     node.decoding = "async";
     node.src = src;
@@ -330,7 +334,7 @@
       const source = element("source");
       source.type = "image/webp";
       source.srcset = [480, 760, 950]
-        .map((width) => `${normalizeImageSource("16th/assets/images/" + poster[1] + "-" + width + ".webp")} ${width}w`)
+        .map((width) => `${normalizeImageSource(new URL("16th/assets/images/" + poster[1] + "-" + width + ".webp", SITE_ROOT).href)} ${width}w`)
         .join(", ");
       source.sizes = "(min-width: 768px) 272px, (min-width: 288px) 256px, calc(100vw - 32px)";
       node.width = 950;
@@ -429,12 +433,12 @@
     const fallback = element(
       "a",
       "instagram-embed-fallback mt-1",
-      "若貼文未顯示，前往 Instagram 查看 ↗"
+      text("若貼文未顯示，前往 Instagram 查看 ↗", "View this post on Instagram ↗")
     );
 
     frame.setAttribute("data-instgrm-permalink", link.href);
     frame.setAttribute("data-instgrm-version", "14");
-    frame.setAttribute("aria-label", link.label || "Instagram 貼文");
+    frame.setAttribute("aria-label", link.label || text("Instagram 貼文", "Instagram post"));
 
     fallback.href = link.href;
     fallback.target = "_blank";
@@ -513,11 +517,11 @@
     const customBackLink = document.body.dataset.backHref
       ? normalizeLink(document.body.dataset.backHref)
       : null;
-    const backLabel = document.body.dataset.backLabel || "← 回首頁";
+    const backLabel = document.body.dataset.backLabel || text("← 回首頁", "← Back to Home");
     const backLink = element("a", "about-back-link", backLabel);
 
     backLink.href = customBackLink ? customBackLink.href : `index.html?v=${PAGE_VERSION}`;
-    backLink.setAttribute("aria-label", customBackLink ? backLabel : "返回高科大魔術社首頁");
+    backLink.setAttribute("aria-label", customBackLink ? backLabel : text("返回高科大魔術社首頁", "Back to the NKUST Magic Club home page"));
     navigation.appendChild(backLink);
     if (PAGE_KIND === "event") {
       const activitiesLink = element("a", "about-back-link", "更多活動");
@@ -621,8 +625,8 @@
     }
 
     if (section.moreActivities) {
-      const more = element("a", "more-activities-link mt-3", "更多活動・查看過往紀錄 →");
-      more.href = `activities.html?v=${PAGE_VERSION}`;
+      const more = element("a", "more-activities-link mt-3", text("更多活動・查看過往紀錄 →", "More Events & Past Highlights (Chinese) →"));
+      more.href = new URL(`activities.html?v=${PAGE_VERSION}`, SITE_ROOT).href;
       container.appendChild(more);
     }
 
@@ -751,9 +755,9 @@
   }
 
   function renderPage(page) {
-    document.title = page.subtitle
-      ? `${page.title}｜${page.subtitle}`
-      : page.title;
+    document.title = IS_ENGLISH
+      ? PAGE_KIND === "home" ? "NKUST Magic Club" : `${page.title} | NKUST Magic Club`
+      : page.subtitle ? `${page.title}｜${page.subtitle}` : page.title;
 
     const fragment = document.createDocumentFragment();
     if (PAGE_KIND === "about" || PAGE_KIND === "event" || PAGE_KIND === "activities") {
@@ -777,24 +781,50 @@
     const card = element("div", "error-card p-3");
     card.setAttribute("role", "alert");
     card.appendChild(
-      element("p", "error-label mb-3", "內容暫時無法載入")
+      element("p", "error-label mb-3", text("內容暫時無法載入", "Content is temporarily unavailable"))
     );
     card.appendChild(
       element(
         "h1",
         "error-title mb-3",
-        "網站沒有白屏，但需要請維護者看一下。"
+        text("網站沒有白屏，但需要請維護者看一下。", "We couldn't load this page.")
       )
     );
     card.appendChild(
       element(
         "p",
         "error-description mb-0",
-        `請稍後重新整理；若仍然出現這個畫面，請確認 ${CONTENT_FILE} 是否存在、檔名大小寫是否正確。`
+        text(`請稍後重新整理；若仍然出現這個畫面，請確認 ${CONTENT_FILE} 是否存在、檔名大小寫是否正確。`, "Please refresh the page and try again. If the problem continues, please contact the club.")
       )
     );
     section.appendChild(card);
     app.replaceChildren(section);
+  }
+
+  async function includeSharedActivities(page) {
+    if (!IS_ENGLISH || PAGE_KIND !== "home") return page;
+
+    try {
+      const response = await fetch(new URL("EDIT_CONTENT.md", SITE_ROOT).href, { cache: "no-cache" });
+      if (!response.ok) throw new Error(`Activity request failed with ${response.status}.`);
+      const source = parseContent(await response.text());
+      const activities = source.sections.find((section) => section.title === "近期活動");
+      if (!activities) return page;
+
+      // Event content stays in Chinese and is maintained only in the original file.
+      return {
+        ...page,
+        sections: page.sections.map((section) => section.title === ACTIVITIES_HEADING
+          ? {
+              ...section,
+              links: activities.links.map((link) => ({ ...link, href: new URL(link.href, SITE_ROOT).href })),
+            }
+          : section),
+      };
+    } catch (error) {
+      console.warn("Unable to load shared event links.", error);
+      return page;
+    }
   }
 
   async function start() {
@@ -805,7 +835,7 @@
       }
 
       const markdown = await response.text();
-      const page = parseContent(markdown);
+      const page = await includeSharedActivities(parseContent(markdown));
       const hasActivities = PAGE_KIND === "home" || PAGE_KIND === "activities";
       let lastDate = taiwanToday();
       renderPage(hasActivities ? prepareActivities(page, lastDate) : page);

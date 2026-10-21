@@ -5,6 +5,12 @@
 
 ---
 
+## News Highlights
+
+- [Abendrot · Media Coverage (Chinese)](../abendrot-news.html)
+
+---
+
 ## Upcoming Events
 
 Event details and registration pages are available in Chinese.

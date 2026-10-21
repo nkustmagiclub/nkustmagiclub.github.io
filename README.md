@@ -35,3 +35,7 @@
 英文文字放在 `en/EDIT_CONTENT.md`、`en/ABOUT.md`、`en/CLASS_SCHEDULE.md`、`en/TEAM.md`，格式和中文 Markdown 相同。更新社團介紹、社課或幹部資料時，請同步更新對應英文檔；圖片、樣式與顯示程式共用原檔。
 
 活動頁維持中文。中英文入口的活動連結都由根目錄的 `EDIT_CONTENT.md` 讀取，到期日與歸檔共用同一套規則，無須在英文檔重複維護。請保留英文入口的 `Upcoming Events` 區塊標題，並將活動連結加在中文原檔的「近期活動」區塊。
+
+## 焦點新聞
+
+入口頁的「焦點新聞」連結在 `EDIT_CONTENT.md` 維護，英文入口在 `en/EDIT_CONTENT.md`。阿本洛特的媒體報導與轉載連結統一放在 `ABENDROT_NEWS.md`，顯示於 `abendrot-news.html`；依報導來源分組，每筆連結標示刊登平台。新聞不使用活動到期日，不會隨活動結束而自動歸檔。

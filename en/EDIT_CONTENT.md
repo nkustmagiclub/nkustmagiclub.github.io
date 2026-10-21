@@ -5,12 +5,6 @@
 
 ---
 
-## News Highlights
-
-- [Abendrot · Media Coverage (Chinese)](../abendrot-news.html)
-
----
-
 ## Upcoming Events
 
 Event details and registration pages are available in Chinese.
@@ -19,6 +13,7 @@ Event details and registration pages are available in Chinese.
 
 ## About Us
 
+- [2026 Media Interviews & Coverage (Chinese)](../abendrot-news.html)
 - [Meet the Club](about.html)
 - [Club Classes · Fall 2026](classes.html)
 

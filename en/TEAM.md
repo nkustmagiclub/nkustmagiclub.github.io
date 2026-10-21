@@ -45,4 +45,4 @@ Department of Mechatronics Engineering
 
 Department of Information Management
 
-![Official Abendrot poster featuring club vice president Hsu Li-yun](../16th/assets/images/performer-hsu-li-yun.jpg)
+![Club vice president Hsu Li-yun](../images/team/hsu-li-yun.webp)

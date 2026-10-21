@@ -45,4 +45,4 @@ Ferret Studio 平面設計創作者，作品涵蓋魔術表演海報、活動主
 
 資訊管理系
 
-![副社長許力勻《阿本洛特》官方海報](16th/assets/images/performer-hsu-li-yun.jpg)
+![副社長許力勻](images/team/hsu-li-yun.webp)

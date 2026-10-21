@@ -9,7 +9,7 @@
 
 曾參與推動「二分鐘舞臺魔術交流賽」，為魔術新手提供上臺演出、累積經驗與交流學習的機會，也曾將魔術表演結合校園反毒宣導，讓魔術走進不同的學習與生活場景。
 
-![指導老師陳炳榮《阿本洛特》官方海報](16th/assets/images/sponsor-moshen-magic.jpg)
+![指導老師陳炳榮](images/team/chen-bing-rong.webp)
 
 ---
 
@@ -19,7 +19,7 @@ Ferret Studio 平面設計創作者，作品涵蓋魔術表演海報、活動主
 
 曾擔任《魔術師的魔術》系列書籍封面設計與下冊插圖繪製，並參與韓國 Lukas《A Trip To The Moon》海報、OMG 魔術大會《金牌魔術腦》主視覺及賴柏承《FANtast》撲克牌設計。
 
-![行政顧問孟婷（MT Yang）《阿本洛特》官方海報](16th/assets/images/sponsor-ferret-studio.jpg)
+![行政顧問孟婷（MT Yang）](images/team/mt-yang.webp)
 
 ---
 
@@ -29,7 +29,7 @@ Ferret Studio 平面設計創作者，作品涵蓋魔術表演海報、活動主
 
 出版《魔術師的魔術》系列書籍，並為下冊《魔術師的魔術：談魔術實作》撰寫註解；系列著作由國際知名魔術師劉謙撰寫序文並推薦。
 
-![魔術顧問陳徹達《阿本洛特》官方海報](16th/assets/images/sponsor-hate-my-hat-magic.jpg)
+![魔術顧問陳徹達](images/team/chen-che-da.webp)
 
 ---
 
@@ -37,7 +37,7 @@ Ferret Studio 平面設計創作者，作品涵蓋魔術表演海報、活動主
 
 機電工程系
 
-![社長盧敬勳《阿本洛特》官方海報](16th/assets/images/performer-lu-jing-xun.jpg)
+![社長盧敬勳](images/team/lu-jing-xun.webp)
 
 ---
 

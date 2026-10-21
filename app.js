@@ -137,6 +137,7 @@
       title: "",
       subtitle: "",
       intro: [],
+      images: [],
       sections: [],
     };
 
@@ -184,9 +185,10 @@
       if (token.type === "paragraph") {
         const images = findImages(token.tokens);
 
-        if (currentSection && images.length > 0) {
+        if (images.length > 0) {
           if (currentItem) currentItem.images.push(...images);
-          else currentSection.images.push(...images);
+          else if (currentSection) currentSection.images.push(...images);
+          else page.images.push(...images);
           return;
         }
 
@@ -529,6 +531,22 @@
       navigation.appendChild(activitiesLink);
     }
     container.appendChild(navigation);
+
+    (page.images || []).forEach((image) => {
+      const figure = buildContentImage(image);
+      if (!figure) return;
+      figure.classList.add("lead-image-figure", "mt-4");
+      const photo = figure.querySelector("img");
+      photo.loading = "eager";
+      photo.fetchPriority = "high";
+      const width = Number(document.body.dataset.leadImageWidth);
+      const height = Number(document.body.dataset.leadImageHeight);
+      if (width > 0 && height > 0) {
+        photo.width = width;
+        photo.height = height;
+      }
+      container.appendChild(figure);
+    });
 
     const heading = element("div", "about-heading mt-4");
     heading.appendChild(element("p", "about-kicker mb-3", PAGE_KICKER));
